@@ -1,0 +1,2635 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>C Programming | CodeKhmerLearnning</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Khmer+UI&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../darkandlight.css">
+    <!-- AOS CSS -->
+<link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+<!-- Font Awesome CDN (Updated version) -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+
+<!-- AOS JavaScript -->
+<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/alpinejs@2.8.2/dist/alpine.min.js" defer></script>
+
+    <style>
+        body {
+            font-family: 'Nokora', sans-serif;
+        }  
+            
+    </style>
+</head>
+<body class="bg-black">
+    <nav class="bg-gray-900 text-white sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-3 flex items-center justify-between">
+            <!-- Logo -->
+            <div class="text-xl font-bold">
+                <a href="../index.html">CodeKhmerLearning</a>
+            </div>
+    
+            <!-- Navigation Links -->
+            <div class="hidden md:flex space-x-6">
+                <a href="../index.html" class="hover:text-blue-400">ទំព័រដើម</a>
+                <div class="relative">
+                    <button id="courseButton" class="flex items-center hover:text-blue-400 focus:outline-none">
+                        វគ្គសិក្សា
+                        <svg class="w-5 h-5 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                        </svg>
+                    </button>
+                    <div id="courseDropdown" class="hidden absolute bg-gray-900 text-white mt-2 py-2 w-48 shadow-lg">
+                        <a href="#c" class="flex items-center px-4 py-2 hover:bg-blue-600">
+                            C
+                        </a>
+                        <a href="#c++" class="flex items-center px-4 py-2 hover:bg-blue-600">
+                            C++
+                        </a>
+                        <a href="#html" class="flex items-center px-4 py-2 hover:bg-blue-600">
+                            HTML
+                        </a>
+                    </div>
+                </div>
+                <a href="#about" class="hover:text-blue-400">អំពីយើង</a>
+                <a href="#contact" class="hover:text-blue-400">ទំនាក់ទំនង</a>
+                
+            </div>
+<!-- Toggle Theme Button with Icon -->
+<button id="themeToggle" class="text-white px-4 py-2 rounded-md bg-blue-600 hover:bg-blue-500 flex items-center space-x-2">
+    <span id="themeIcon" class="w-5 h-5">
+        
+    </span>
+   
+</button>
+
+
+
+    
+            <!-- Mobile Menu Button -->
+            <div class="md:hidden">
+                <button id="menuButton" class="focus:outline-none">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    
+        <!-- Mobile Menu -->
+        <div id="mobileMenu" class="hidden md:hidden bg-gray-900">
+            <a href="#home" class="block px-4 py-2 hover:bg-blue-600">ទំព័រដើម</a>
+            <div class="relative">
+                <button id="mobileCourseButton" class="flex items-center w-full text-left px-4 py-2 hover:bg-blue-600">
+                    វគ្គសិក្សា
+                    <svg class="w-5 h-5 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                    </svg>
+                </button>
+                <div id="mobileCourseDropdown" class="hidden bg-gray-900">
+                    <a href="#c" class="flex items-center px-4 py-2 hover:bg-blue-500">
+                        C
+                    </a>
+                    <a href="#c++" class="flex items-center px-4 py-2 hover:bg-blue-500">
+                        C++
+                    </a>
+                    <a href="#html" class="flex items-center px-4 py-2 hover:bg-blue-500">
+                        HTML
+                    </a>
+                </div>
+            </div>
+            <a href="#about" class="block px-4 py-2 hover:bg-blue-600">អំពីយើង</a>
+            <a href="#contact" class="block px-4 py-2 hover:bg-blue-600">ទំនាក់ទំនង</a>
+        </div>
+    </nav>
+
+    <div x-data="{ open: false }">
+        <!-- Button to toggle Sidebar (for mobile) -->
+<div class="p-4 fixed bottom-4  transform  md:hidden">
+    <button @click="open = !open" class=" p-2 rounded-md bg-blue-500 hover:bg-blue-600 focus:outline-none">
+        <span class="text-white text-lg">☰</span>
+    </button>
+</div>
+
+    
+       <!-- Sidebar for mobile -->
+<div x-show="open" x-transition:enter="transition transform duration-300" x-transition:enter-start="-translate-x-full" x-transition:enter-end="translate-x-0" x-transition:leave="transition transform duration-300" x-transition:leave-start="translate-x-0" x-transition:leave-end="-translate-x-full"
+class="fixed inset-0 z-50 bg-gray-800  md:hidden" id="sidebar">
+<div class="flex justify-end p-6">
+    <button @click="open = false" class="text-white text-2xl" id="closeSidebar">×</button>
+</div>
+<div class="flex flex-col items-center text-white space-y-4 py-6 max-h-screen overflow-y-auto">
+    <ul class="space-y-4">
+        <li>
+            <a href="#introduction" class="hover:text-blue-400">1. Introduction to C Programming</a>
+            <ul class="ml-4 space-y-2">
+                <li><a href="#overview" class="hover:text-blue-400">1.1. Overview of C Programming</a></li>
+                <li><a href="#history" class="hover:text-blue-400">1.2. History of C</a></li>
+                <li><a href="#features" class="hover:text-blue-400">1.3. Features of C</a></li>
+                <li><a href="#setup" class="hover:text-blue-400">1.4. Setting Up the C Environment</a></li>
+                <li><a href="#structure" class="hover:text-blue-400">1.5. Structure of a C Program</a></li>
+            </ul>
+        </li>
+        <li>
+            <a href="#variables" class="hover:text-blue-400">2. Variables and Data Types</a>
+            <ul class="ml-4 space-y-2">
+                <li><a href="#declaring-variables" class="hover:text-blue-400">2.1. Declaring Variables</a></li>
+                <li><a href="#basic-data-types" class="hover:text-blue-400">2.2. Basic Data Types</a></li>
+                <li><a href="#constants" class="hover:text-blue-400">2.3. Constants</a></li>
+                <li><a href="#type-casting" class="hover:text-blue-400">2.4. Type Casting and Conversion</a></li>
+                <li><a href="#storage-classes" class="hover:text-blue-400">2.5. Storage Classes</a></li>
+            </ul>
+        </li>
+        <li>
+            <a href="#operators" class="hover:text-blue-400">3. Operators in C</a>
+            <ul class="ml-4 space-y-2">
+                <li><a href="#arithmetic-operators" class="hover:text-blue-400">3.1. Arithmetic Operators</a></li>
+                <li><a href="#relational-operators" class="hover:text-blue-400">3.2. Relational Operators</a></li>
+                <li><a href="#logical-operators" class="hover:text-blue-400">3.3. Logical Operators</a></li>
+                <li><a href="#assignment-operators" class="hover:text-blue-400">3.4. Assignment Operators</a></li>
+                <li><a href="#bitwise-operators" class="hover:text-blue-400">3.5. Bitwise Operators</a></li>
+                <li><a href="#increment-decrement" class="hover:text-blue-400">3.6. Increment and Decrement</a></li>
+                <li><a href="#conditional-operator" class="hover:text-blue-400">3.6 Conditional Operator</a></li>
+            </ul>
+        </li>
+        <li>
+            <a href="#control-statements" class="hover:text-blue-400">4. Control Statements</a>
+            <ul class="ml-4 space-y-2">
+                <li><a href="#if-statement" class="hover:text-blue-400">if Statement</a></li>
+                <li><a href="#else-statement" class="hover:text-blue-400">else Statement</a></li>
+                <li><a href="#switch-statement" class="hover:text-blue-400">switch Statement</a></li>
+                <li><a href="#break-statement" class="hover:text-blue-400">break Statement</a></li>
+                <li><a href="#continue-statement" class="hover:text-blue-400">continue Statement</a></li>
+                <li><a href="#goto-statement" class="hover:text-blue-400">goto Statement</a></li>
+                <li><a href="#nested-structures" class="hover:text-blue-400">Nested Control Structures</a></li>
+            </ul>
+        </li>
+        <li>
+            <a href="#loops" class="hover:text-blue-400">5. Loops in C</a>
+            <ul class="ml-4 space-y-2">
+                <li><a href="#for-loop" class="hover:text-blue-400">for Loop</a></li>
+                <li><a href="#while-loop" class="hover:text-blue-400">while Loop</a></li>
+                <li><a href="#do-while-loop" class="hover:text-blue-400">do-while Loop</a></li>
+                <li><a href="#nested-loops" class="hover:text-blue-400">Nested Loops</a></li>
+                <li><a href="#infinite-loops" class="hover:text-blue-400">Infinite Loops</a></li>
+            </ul>
+        </li>
+        <li>
+            <a href="#functions" class="hover:text-blue-400">6. Functions in C</a>
+            <ul class="ml-4 space-y-2">
+                <li><a href="#function-declaration" class="hover:text-blue-400">Function Declaration and Definition</a></li>
+                <li><a href="#arguments-return" class="hover:text-blue-400">Function Arguments and Return Types</a></li>
+                <li><a href="#recursion" class="hover:text-blue-400">Recursion</a></li>
+                <li><a href="#call-by-value" class="hover:text-blue-400">Call by Value vs. Call by Reference</a></li>
+                <li><a href="#prototypes" class="hover:text-blue-400">Function Prototypes</a></li>
+                <li><a href="#header-files" class="hover:text-blue-400">Header Files and Libraries</a></li>
+                <li><a href="#standard-functions" class="hover:text-blue-400">Standard Library Functions</a></li>
+            </ul>
+        </li>
+        <li>
+            <a href="#arrays" class="hover:text-blue-400">7. Arrays in C</a>
+            <ul class="ml-4 space-y-2">
+                <li><a href="#one-dimensional-arrays" class="hover:text-blue-400">One-dimensional Arrays</a></li>
+                <li><a href="#multi-dimensional-arrays" class="hover:text-blue-400">Multi-dimensional Arrays</a></li>
+                <li><a href="#array-initialization" class="hover:text-blue-400">Array Initialization</a></li>
+                <li><a href="#passing-arrays" class="hover:text-blue-400">Passing Arrays to Functions</a></li>
+                <li><a href="#array-manipulation" class="hover:text-blue-400">Array Manipulation</a></li>
+            </ul>
+        </li>
+        <li>
+            <a href="#pointers" class="hover:text-blue-400">8. Pointers in C</a>
+            <ul class="ml-4 space-y-2">
+                <li><a href="#introduction-to-pointers" class="hover:text-blue-400">Introduction to Pointers</a></li>
+                <li><a href="#pointer-declaration" class="hover:text-blue-400">Pointer Declaration and Initialization</a></li>
+                <li><a href="#pointers-and-arrays" class="hover:text-blue-400">Pointers and Arrays</a></li>
+                <li><a href="#pointers-to-functions" class="hover:text-blue-400">Pointers to Functions</a></li>
+                <li><a href="#dynamic-memory-allocation" class="hover:text-blue-400">Dynamic Memory Allocation</a></li>
+                <li><a href="#pointer-arithmetic" class="hover:text-blue-400">Pointer Arithmetic</a></li>
+                <li><a href="#pointers-to-structures" class="hover:text-blue-400">Pointers to Structures and Arrays</a></li>
+            </ul>
+        </li>
+        <!-- Add similar nested lists for remaining modules -->
+    </ul>
+</div>
+</div>
+
+    
+        <!-- មាតិកាសំខាន់ -->
+        <div class="flex">
+            <!-- Sidebar សម្រាប់ Desktop -->
+            <div class="hidden md:block w-1/4 bg-gray-800 text-white p-6  overflow-y-auto max-h-[1000px]">
+                <h2 class="text-xl font-bold mb-6">មេរៀនកម្មវិធី C</h2>
+                <ul class="space-y-4">
+                    <li>
+                        <a href="#introduction" class="hover:text-blue-400">1. Introduction to C Programming</a>
+                        <ul class="ml-4 space-y-2">
+                            <li><a href="#overview" class="hover:text-blue-400">1.1. Overview of C Programming</a></li>
+                            <li><a href="#history" class="hover:text-blue-400">1.2. History of C</a></li>
+                            <li><a href="#features" class="hover:text-blue-400">1.3. Features of C</a></li>
+                            <li><a href="#setup" class="hover:text-blue-400">1.4. Setting Up the C Environment</a></li>
+                            <li><a href="#structure" class="hover:text-blue-400">1.5. Structure of a C Program</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#variables" class="hover:text-blue-400">2. Variables and Data Types</a>
+                        <ul class="ml-4 space-y-2">
+                            <li><a href="#declaring-variables" class="hover:text-blue-400">2.1. Declaring Variables</a></li>
+                            <li><a href="#basic-data-types" class="hover:text-blue-400">2.2. Basic Data Types</a></li>
+                            <li><a href="#constants" class="hover:text-blue-400">2.3. Constants</a></li>
+                            <li><a href="#type-casting" class="hover:text-blue-400">2.4. Type Casting and Conversion</a></li>
+                            <li><a href="#storage-classes" class="hover:text-blue-400">2.5. Storage Classes</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#operators" class="hover:text-blue-400">3. Operators in C</a>
+                        <ul class="ml-4 space-y-2">
+                            <li><a href="#arithmetic-operators" class="hover:text-blue-400">3.1. Arithmetic Operators</a></li>
+                            <li><a href="#relational-operators" class="hover:text-blue-400">3.2. Relational Operators</a></li>
+                            <li><a href="#logical-operators" class="hover:text-blue-400">3.3. Logical Operators</a></li>
+                            <li><a href="#assignment-operators" class="hover:text-blue-400">3.4. Assignment Operators</a></li>
+                            <li><a href="#bitwise-operators" class="hover:text-blue-400">3.5. Bitwise Operators</a></li>
+                            <li><a href="#increment-decrement" class="hover:text-blue-400">3.6. Increment and Decrement</a></li>
+                            <li><a href="#conditional-operator" class="hover:text-blue-400">3.6 Conditional Operator</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#control-statements" class="hover:text-blue-400">4. Control Statements</a>
+                        <ul class="ml-4 space-y-2">
+                            <li><a href="#if-statement" class="hover:text-blue-400">4.1. if Statement</a></li>
+                            <li><a href="#else-statement" class="hover:text-blue-400">4.2. else Statement</a></li>
+                            <li><a href="#switch-statement" class="hover:text-blue-400">4.3. switch Statement</a></li>
+                            <li><a href="#break-statement" class="hover:text-blue-400">4.4. break Statement</a></li>
+                            <li><a href="#continue-statement" class="hover:text-blue-400">4.5. continue Statement</a></li>
+                            <li><a href="#goto-statement" class="hover:text-blue-400">4.6. goto Statement</a></li>
+                            <li><a href="#nested-structures" class="hover:text-blue-400">4.7. Nested Control Structures</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#loops" class="hover:text-blue-400">5. Loops in C</a>
+                        <ul class="ml-4 space-y-2">
+                            <li><a href="#for-loop" class="hover:text-blue-400">5.1. for Loop</a></li>
+                            <li><a href="#while-loop" class="hover:text-blue-400">5.2. while Loop</a></li>
+                            <li><a href="#do-while-loop" class="hover:text-blue-400">5.3. do-while Loop</a></li>
+                            <li><a href="#nested-loops" class="hover:text-blue-400">5.4. Nested Loops</a></li>
+                            <li><a href="#infinite-loops" class="hover:text-blue-400">5.5. Infinite Loops</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#functions" class="hover:text-blue-400">6. Functions in C</a>
+                        <ul class="ml-4 space-y-2">
+                            <li><a href="#function-declaration" class="hover:text-blue-400">6.1. Function Declaration and Definition</a></li>
+                            <li><a href="#arguments-return" class="hover:text-blue-400">6.2. Function Arguments and Return Types</a></li>
+                            <li><a href="#recursion" class="hover:text-blue-400">6.3. Recursion</a></li>
+                            <li><a href="#call-by-value" class="hover:text-blue-400">6.3. Call by Value vs. Call by Reference</a></li>
+                            <li><a href="#prototypes" class="hover:text-blue-400">6.4. Function Prototypes</a></li>
+                            <li><a href="#header-files" class="hover:text-blue-400">6.5. Header Files and Libraries</a></li>
+                            <li><a href="#standard-functions" class="hover:text-blue-400">6.6. Standard Library Functions</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#arrays" class="hover:text-blue-400">7. Arrays in C</a>
+                        <ul class="ml-4 space-y-2">
+                            <li><a href="#one-dimensional-arrays" class="hover:text-blue-400">7.1. One-dimensional Arrays</a></li>
+                            <li><a href="#multi-dimensional-arrays" class="hover:text-blue-400">7.2. Multi-dimensional Arrays</a></li>
+                            <li><a href="#array-initialization" class="hover:text-blue-400">7.3. Array Initialization</a></li>
+                            <li><a href="#passing-arrays" class="hover:text-blue-400">7.4. Passing Arrays to Functions</a></li>
+                            <li><a href="#array-manipulation" class="hover:text-blue-400">7.5. Array Manipulation</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#pointers" class="hover:text-blue-400">8. Pointers in C</a>
+                        <ul class="ml-4 space-y-2">
+                            <li><a href="#introduction-to-pointers" class="hover:text-blue-400">8.1. Introduction to Pointers</a></li>
+                            <li><a href="#pointer-declaration" class="hover:text-blue-400">8.2. Pointer Declaration and Initialization</a></li>
+                            <li><a href="#pointers-and-arrays" class="hover:text-blue-400">8.3. Pointers and Arrays</a></li>
+                            <li><a href="#pointers-to-functions" class="hover:text-blue-400">8.4. Pointers to Functions</a></li>
+                            <li><a href="#dynamic-memory-allocation" class="hover:text-blue-400">8.5. Dynamic Memory Allocation</a></li>
+                            <li><a href="#pointer-arithmetic" class="hover:text-blue-400">8.6. Pointer Arithmetic</a></li>
+                            <li><a href="#pointers-to-structures" class="hover:text-blue-400">8.7. Pointers to Structures and Arrays</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#structures-unions" class="hover:text-blue-400">9. Structures and Unions</a>
+                        <ul class="ml-4 space-y-2">
+                            <li><a href="#introduction-to-structures" class="hover:text-blue-400">9.1. Introduction to Structures</a></li>
+                            <li><a href="#structure-declaration-initialization" class="hover:text-blue-400">9.2. Structure Declaration and Initialization</a></li>
+                            <li><a href="#accessing-structure-members" class="hover:text-blue-400">9.3. Accessing Structure Members</a></li>
+                            <li><a href="#nested-structures" class="hover:text-blue-400">9.4. Nested Structures</a></li>
+                            <li><a href="#unions-in-c" class="hover:text-blue-400">9.5. Unions in C</a></li>
+                            <li><a href="#differences-between-structures-unions" class="hover:text-blue-400">9.6. Differences Between Structures and Unions</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#file-handling" class="hover:text-blue-400">10. File Handling</a>
+                        <ul class="ml-4 space-y-2">
+                            <li><a href="#introduction-to-file-handling" class="hover:text-blue-400">10.1. Introduction to File Handling</a></li>
+                            <li><a href="#file-operations" class="hover:text-blue-400">10.2. File Operations: fopen, fclose, fread, fwrite</a></li>
+                            <li><a href="#file-pointers-modes" class="hover:text-blue-400">10.3. File Pointers and Modes</a></li>
+                            <li><a href="#reading-writing-text-files" class="hover:text-blue-400">10.4. Reading and Writing Text Files</a></li>
+                            <li><a href="#error-handling-file-operations" class="hover:text-blue-400">10.5. Error Handling in File Operations</a></li>
+                            <li><a href="#binary-file-handling" class="hover:text-blue-400">10.6. Binary File Handling</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#dynamic-memory-allocation" class="hover:text-blue-400">11. Dynamic Memory Allocation</a>
+                        <ul class="ml-4 space-y-2">
+                            <li><a href="#introduction-to-dynamic-memory" class="hover:text-blue-400">11.1. Introduction to Dynamic Memory</a></li>
+                            <li><a href="#malloc-calloc-realloc-free" class="hover:text-blue-400">11.2. malloc(), calloc(), realloc(), and free()</a></li>
+                            <li><a href="#memory-leaks-memory-management" class="hover:text-blue-400">11.3. Memory Leaks and Memory Management</a></li>
+                            <li><a href="#using-pointers-with-dynamic-memory" class="hover:text-blue-400">11.4. Using Pointers with Dynamic Memory</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#preprocessor-directives" class="hover:text-blue-400">12. Preprocessor Directives</a>
+                        <ul class="ml-4 space-y-2">
+                            <li><a href="#define-and-constants" class="hover:text-blue-400">12.1. #define and Constants</a></li>
+                            <li><a href="#include-and-header-files" class="hover:text-blue-400">12.2. #include and Header Files</a></li>
+                            <li><a href="#conditional-compilation" class="hover:text-blue-400">12.3. Conditional Compilation</a></li>
+                            <li><a href="#macros-and-inline-functions" class="hover:text-blue-400">12.4. Macros and Inline Functions</a></li>
+                            <li><a href="#file-inclusion-and-guard-directives" class="hover:text-blue-400">12.5. File Inclusion and Guard Directives</a></li>
+                        </ul>
+                    </li>
+                    
+                    <li>
+                        <a href="#error-handling-and-debugging" class="hover:text-blue-400">13. Error Handling and Debugging</a>
+                        <ul class="ml-4 space-y-2">
+                            <li><a href="#error-handling-in-c" class="hover:text-blue-400">13.1. Error Handling in C</a></li>
+                            <li><a href="#using-assert-for-debugging" class="hover:text-blue-400">13.2. Using assert() for Debugging</a></li>
+                            <li><a href="#handling-runtime-errors" class="hover:text-blue-400">13.3. Handling Runtime Errors</a></li>
+                            <li><a href="#debugging-with-gdb" class="hover:text-blue-400">13.4. Debugging with GDB</a></li>
+                            <li><a href="#exception-handling-techniques" class="hover:text-blue-400">13.5. Exception Handling Techniques</a></li>
+                        </ul>
+                    </li>
+                    
+                    <li>
+                        <a href="#advanced-c-concepts" class="hover:text-blue-400">14. Advanced C Concepts</a>
+                        <ul class="ml-4 space-y-2">
+                            <li><a href="#multithreading-in-c" class="hover:text-blue-400">14.1. Multithreading in C</a></li>
+                            <li><a href="#sockets-and-networking-in-c" class="hover:text-blue-400">14.2. Sockets and Networking in C</a></li>
+                            <li><a href="#c-and-object-oriented-programming" class="hover:text-blue-400">14.3. C and Object-Oriented Programming</a></li>
+                            <li><a href="#advanced-data-structures" class="hover:text-blue-400">14.4. Advanced Data Structures (e.g., Trees, Graphs)</a></li>
+                            <li><a href="#compiler-optimization-techniques" class="hover:text-blue-400">14.5. Compiler Optimization Techniques</a></li>
+                        </ul>
+                    </li>
+                    
+                    <li>
+                        <a href="#c-standard-library" class="hover:text-blue-400">15. C Standard Library</a>
+                        <ul class="ml-4 space-y-2">
+                            <li><a href="#standard-input-output" class="hover:text-blue-400">15.1. Standard Input/Output</a></li>
+                            <li><a href="#string-handling-functions" class="hover:text-blue-400">15.2. String Handling Functions</a></li>
+                            <li><a href="#mathematical-functions" class="hover:text-blue-400">15.3. Mathematical Functions</a></li>
+                            <li><a href="#memory-management-functions" class="hover:text-blue-400">15.4. Memory Management Functions</a></li>
+                            <li><a href="#date-and-time-functions" class="hover:text-blue-400">15.5. Date and Time Functions</a></li>
+                            <li><a href="#character-handling-functions" class="hover:text-blue-400">15.6. Character Handling Functions</a></li>
+                        </ul>
+                    </li>
+                    
+                    
+                    
+                    <!-- Add similar nested lists for remaining modules -->
+                </ul>
+                
+                
+            </div>
+    
+            <!-- Main Content Area -->
+
+            
+<!-- Main Content Area -->
+<div class="py-12 px-6  overflow-y-auto max-h-[1000px]">
+    <section id="introduction" class="">
+        <h3 class="text-3xl font-semibold text-blue-700 mb-4">1. ការណែនាំអំពីកម្មវិធី C</h3>
+        <p class="text-lg ">
+            កម្មវិធី C គឺជាភាសាកម្មវិធីដែលមានគោលបំណងទូទៅ និងជាភាសាដែលគាំទ្របែបប្រតិបត្តិការ ដែលត្រូវបានបង្កើតឡើងដោយ Dennis Ritchie នៅឆ្នាំ 1972។ វាត្រូវបានប្រើយ៉ាងទូលំទូលាយសម្រាប់កម្មវិធីប្រព័ន្ធ និងកម្មវិធីអនុវត្ត។
+        </p>
+        <p class="text-lg  mt-4">
+            ក្នុងផ្នែកនេះយើងនឹងសិក្សាពីមូលដ្ឋាននៃភាសាកម្មវិធី C។
+        </p>
+        
+        <!-- C Program Example -->
+        <p class="text-lg mt-6 ">ឧទាហរណ៍:</p>
+        <pre class="bg-gray-800 text-white p-4 rounded-lg mt-2 overflow-x-auto overflow-x-auto">
+    <code>
+    // ឧទាហរណ៍នៃកម្មវិធី C មួយ
+    #include &lt;stdio.h&gt;
+    
+    int main() {
+        // បង្ហាញសារមួយ
+        printf("សួស្តី ពិភពលោក!\n");
+        return 0;
+    }
+    </code>
+        </pre>
+    
+        <p class="text-lg mt-4 ">លទ្ធផល:</p>
+        <pre class="bg-gray-800 text-white p-4 rounded-lg mt-2 overflow-x-auto overflow-x-auto">
+    <code>
+    សួស្តី ពិភពលោក!
+    </code>
+        </pre>
+    </section>
+    
+    <section id="overview" class=" py-6 px-6 ">
+        <h3 class="text-2xl font-semibold text-blue-700 mb-4">1.1. ការពិពណ៌នាអំពីកម្មវិធី C</h3>
+        <p class="text-lg ">
+            កម្មវិធី C មានស៊ិនថាគមន៍សាមញ្ញ និងត្រូវបានប្រើសម្រាប់សរសេរកម្មវិធីប្រើប្រាស់ប្រព័ន្ធ ប្រព័ន្ធប្រតិបត្តិការ និងប្រព័ន្ធបម្រើ។
+        </p>
+    </section>
+    
+    <section id="history" class=" py-6 px-6 ">
+        <h3 class="text-2xl font-semibold text-blue-700 mb-4">1.2. ប្រវត្តិរបស់ C</h3>
+        <p class="text-lg ">
+            C ត្រូវបានបង្កើតឡើងនៅឆ្នាំ 1972 ដោយ Dennis Ritchie នៅ Bell Labs។ វាត្រូវបានប្រើដំបូងសម្រាប់សរសេរកម្មវិធីប្រព័ន្ធ ប៉ុន្តែបន្ទាប់មកវាត្រូវបានពេញនិយមសម្រាប់ការអភិវឌ្ឍកម្មវិធីអនុវត្ត។
+        </p>
+    </section>
+    
+    <section id="features" class=" py-6 px-6 ">
+        <h3 class="text-2xl font-semibold text-blue-700 mb-4">1.3 លក្ខណៈពិសេសនៃ C</h3>
+        <ul class="list-disc pl-6 text-lg ">
+            <li>សាមញ្ញ និងស្រួលក្នុងការសិក្សា</li>
+            <li>ភាសាប្រតិបត្តិការ</li>
+            <li>មានប្រសិទ្ធភាព និងលឿន</li>
+            <li>ប្រើប្រាស់ទូលំទូលាយក្នុងការអភិវឌ្ឍកម្មវិធីប្រព័ន្ធ</li>
+        </ul>
+    </section>
+    
+    <section id="setup" class=" py-6 px-6 ">
+        <h3 class="text-2xl font-semibold text-blue-700 mb-4">1.4. ការតំឡើងបរិយាកាសកម្មវិធី C</h3>
+        <p class="text-lg ">
+            ដើម្បីចាប់ផ្តើមសរសេរកម្មវិធី C អ្នកត្រូវការតំឡើងបរិយាកាសអភិវឌ្ឍ C។ វាទូទៅរួមមានកម្មវិធីកម្តៅ C ដូចជា GCC (GNU Compiler Collection)។
+        </p>
+    </section>
+    
+    <section id="structure" class=" py-6 px-6 ">
+        <h3 class="text-2xl font-semibold text-blue-700 mb-4">1.5. រចនាសម្ព័ន្ធនៃកម្មវិធី C</h3>
+        <p class="text-lg ">
+            កម្មវិធី C ទូទៅមានធាតុទាំងនេះ:
+        </p>
+        <ul class="list-disc pl-6 text-lg ">
+            <li>ឯកសារអក្សរសាStr</li>
+            <li>មុខងារលើកចេញ</li>
+            <li>សេចក្តីថ្លែង និងគម្រប</li>
+        </ul>
+    </section>
+    
+
+    
+<div id="variables" class="py-12 px-6 overflow-y-auto">
+    <h2 class="text-3xl font-semibold text-blue-600">2. អថេរ និង ប្រភេទទិន្នន័យ</h2>
+    <p class="mt-4 text-lg">ផ្នែកនេះគួរឲ្យដឹងពីមូលដ្ឋាននៃអថេរ និងប្រភេទទិន្នន័យនៅក្នុងការសរសេរប្រព័ន្ធ C ។</p>
+
+    <!-- Declaring Variables -->
+    <div id="declaring-variables" class="mt-8">
+        <h3 class="text-2xl font-semibold text-blue-600">2.1. ការប្រកាសអថេរ</h3>
+        <p class="mt-2 ">នៅក្នុង C អថេរ​ត្រូវបានប្រើដើម្បីផ្ទុកទិន្នន័យ។ ដើម្បីប្រកាសអថេរ អ្នកត្រូវតែបញ្ជាក់ប្រភេទ និងឈ្មោះរបស់វា។ ឧទាហរណ៍៖</p>
+        <pre class="bg-gray-800 text-white p-4 rounded-lg mt-2 overflow-x-auto overflow-x-auto">
+int number;
+float pi;
+char letter;
+        </pre>
+        <p class="mt-2 ">នៅទីនេះ 'int' ត្រូវបានប្រើសម្រាប់ចំនួនគត់ 'float' សម្រាប់ចំនួនបែបភាគរយ និង 'char' សម្រាប់តួអក្សរ។</p>
+    </div>
+
+    <!-- Basic Data Types -->
+    <div id="basic-data-types" class="mt-8">
+        <h3 class="text-2xl font-semibold text-blue-600">2.2. ប្រភេទទិន្នន័យមូលដ្ឋាន</h3>
+        <p class="mt-2 ">C មានប្រភេទទិន្នន័យមូលដ្ឋានជាច្រើន រួមមាន៖</p>
+        <ul class="list-disc ml-6 mt-2 ">
+            <li><strong>int</strong>: ប្រើសម្រាប់ចំនួនគត់ (ឧ. 10, -50)</li>
+            <li><strong>float</strong>: ប្រើសម្រាប់ចំនួនបែបភាគរយ (ឧ. 3.14, -0.001)</li>
+            <li><strong>double</strong>: ប្រើសម្រាប់ចំនួនបែបភាគរយដែលមានភាពត្រឹមត្រូវខ្ពស់ (ឧ. 3.14159265359)</li>
+            <li><strong>char</strong>: ប្រើសម្រាប់តួអក្សរ (ឧ. 'a', 'Z')</li>
+        </ul>
+    </div>
+
+    <!-- Constants -->
+    <div id="constants" class="mt-8">
+        <h3 class="text-2xl font-semibold text-blue-600">2.3. តម្លៃថេរ</h3>
+        <p class="mt-2 ">តម្លៃថេរនេះគឺជាតម្លៃដែលមិនអាចផ្លាស់ប្តូរបានក្នុងការប្រតិបត្តិការនៃកម្មវិធី។ វាត្រូវបានកំណត់ដោយប្រើគន្លង <code>#define</code> ឬក៏ប្រើកូនសោ <code>const</code>៖</p>
+        <pre class="bg-gray-800 text-white p-4 rounded-lg mt-2 overflow-x-auto overflow-x-auto">
+#define PI 3.14159
+const int MAX_VALUE = 100;
+        </pre>
+        <p class="mt-2 ">ឧទាហរណ៍ទីមួយកំណត់តម្លៃថេរដើម្បីសម្គាល់ PI ហើយឧទាហរណ៍ទីពីរប្រើកូនសោ <code>const</code> សម្រាប់តម្លៃថេរចំនួនគត់។</p>
+    </div>
+
+    <!-- Type Casting -->
+    <div id="type-casting" class="mt-8">
+        <h3 class="text-2xl font-semibold text-blue-600">2.4. ការបម្លែងប្រភេទ និង ការបម្លែងទិន្នន័យ</h3>
+        <p class="mt-2 ">ការបម្លែងប្រភេទគឺជាដំណើរការនៃការបម្លែងប្រភេទទិន្នន័យពីមួយទៅមួយ។ នៅក្នុង C អ្នកអាចធ្វើបានទាំងដោយស្វ័យប្រវត្តិក្នុងករណីណាមួយ ឬដោយគ្រូបង្រៀន៖</p>
+        <ul class="list-disc ml-6 mt-2 ">
+            <li><strong>ការបម្លែងដោយស្វ័យប្រវត្តិ</strong>: អ្នកកុំព្យូទ័រប្រែប្រភេទដោយស្វ័យប្រវត្តិពេលបម្លែងពីប្រភេទតូចទៅធំជាង ដូចជា ពី <code>int</code> ទៅ <code>float</code> ។</li>
+            <li><strong>ការបម្លែងដោយដៃ</strong>: អ្នកអភិវឌ្ឍន៍ធ្វើការបម្លែងដោយដៃ ដូចជា បម្លែងពី <code>float</code> ទៅ <code>int</code> ។</li>
+        </ul>
+        <pre class="bg-gray-800 text-white p-4 rounded-lg mt-2 overflow-x-auto overflow-x-auto">
+int num = 10;
+float numFloat = num;  // ការបម្លែងដោយស្វ័យប្រវត្តិ
+numFloat = 10.5;
+int numInt = (int) numFloat;  // ការបម្លែងដោយដៃ
+        </pre>
+    </div>
+
+    <!-- Storage Classes -->
+    <div id="storage-classes" class="mt-8">
+        <h3 class="text-2xl font-semibold text-blue-600">2.5. ប្រភេទផ្ទុកទិន្នន័យ</h3>
+        <p class="mt-2 ">ប្រភេទផ្ទុកទិន្នន័យក្នុង C គឺកំណត់ព្រមទាំងវិស័យ ការច visibility និង អាយុរស់រវើកនៃអថេរ។ មានប្រភេទផ្ទុកទិន្នន័យបួនប្រភេទ៖</p>
+        <ul class="list-disc ml-6 mt-2 ">
+            <li><strong>auto</strong>: ប្រភេទផ្ទុកទិន្នន័យលំនាំសម្រាប់អថេរមូលដ្ឋាន។ ពួកវាត្រូវបានបង្កើតដោយស្វ័យប្រវត្តិនៅពេលហៅមុខងារ។</li>
+            <li><strong>register</strong>: ប្រើសម្រាប់ផ្ទុកអថេរនៅក្នុងចំណងចងក្រង CPU ជំនួសការផ្ទុកនៅក្នុង RAM ដើម្បីចូលរួមបានលឿន។</li>
+            <li><strong>static</strong>: ប្រើសម្រាប់រក្សាតម្លៃរបស់អថេរប្រសិនបើបន្តរក្សាតម្លៃនោះរហូតបន្ទាប់ពីការចាកចេញពីមុខងារ។</li>
+            <li><strong>extern</strong>: ប្រើសម្រាប់ប្រកាសអថេរដែលបានកំណត់ក្នុងឯកសារផ្សេង។</li>
+        </ul>
+    </div>
+</div>
+
+
+<div id="operators" class="py-12 px-6 overflow-y-auto">
+    <h2 class="text-3xl font-semibold text-blue-600">3. OPERATORS_ នៅក្នុង C</h2>
+    <p class="mt-4 text-lg">នៅក្នុងផ្នែកនេះ យើងនឹងស្វែងយល់ពីប្រភេទនៃ OPERATOR_ ក្នុងកម្មវិធី C ។</p>
+
+    <!-- Arithmetic Operators -->
+    <div id="arithmetic-operators" class="mt-8">
+        <h3 class="text-2xl font-semibold text-blue-600">3.1. OPERATOR_គណិតវិទ្យា</h3>
+        <p class="mt-2">OPERATOR_គណិតវិទ្យាត្រូវបានប្រើសម្រាប់ធ្វើការប្រតិបត្ដិការគណិតវិទ្យា។ OPERATOR_គណិតវិទ្យាមូលដ្ឋានក្នុង C មានដូចតទៅ៖</p>
+        <ul class="list-disc ml-6 mt-2">
+            <li><strong>+</strong>: បូក</li>
+            <li><strong>-</strong>: បន្ថយ</li>
+            <li><strong>*</strong>: គុណ</li>
+            <li><strong>/</strong>: ចែក</li>
+            <li><strong>%</strong>: បំបែកសល់ (បរិមាណនៅក្រោយការចែក)</li>
+        </ul>
+        <p class="mt-2">ឧទាហរណ៍៖</p>
+        <pre class="bg-gray-800 text-white p-4 rounded-lg mt-2 overflow-x-auto overflow-x-auto">
+    <code>
+    int a = 10, b = 5;
+    int sum = a + b; // បូក
+    int product = a * b; // គុណ
+    </code>
+        </pre>
+    </div>
+
+    <!-- Relational Operators -->
+    <div id="relational-operators" class="mt-8">
+        <h3 class="text-2xl font-semibold text-blue-600">3.2. OPERATOR_ប្រៀបធៀប</h3>
+        <p class="mt-2">OPERATOR_ប្រៀបធៀបត្រូវបានប្រើសម្រាប់ប្រៀបធៀបតម្លៃពីរដើម្បីទទួលបានលទ្ធផល boolean (ពិត ឬ មិនពិត)។ OPERATOR_ទាំងនេះមានដូចតទៅ៖</p>
+        <ul class="list-disc ml-6 mt-2">
+            <li><strong>==</strong>: ស្មើនឹង</li>
+            <li><strong>!=</strong>: មិនស្មើនឹង</li>
+            <li><strong>&gt;</strong>: លើស</li>
+            <li><strong>&lt;</strong>: តិចជាង</li>
+            <li><strong>&gt;=</strong>: លើសឬស្មើ</li>
+            <li><strong>&lt;=</strong>: តិចឬស្មើ</li>
+        </ul>
+        <p class="mt-2">ឧទាហរណ៍៖</p>
+        <pre class="bg-gray-800 text-white p-4 rounded-lg mt-2 overflow-x-auto overflow-x-auto">
+    <code>
+    int a = 10, b = 5;
+    bool result = (a > b); // ពិត ពីព្រោះ 10 លើស 5
+    </code>
+        </pre>
+    </div>
+
+    <!-- Logical Operators -->
+    <div id="logical-operators" class="mt-8">
+        <h3 class="text-2xl font-semibold text-blue-600">3.3. OPERATOR_តុល្យភាព</h3>
+        <p class="mt-2">OPERATOR_តុល្យភាពត្រូវបានប្រើសម្រាប់សម្ពោធន៍បញ្ចូលនៃការបញ្ជាក់លក្ខខណ្ឌ។ OPERATOR_ទាំងនេះមានដូចតទៅ៖</p>
+        <ul class="list-disc ml-6 mt-2">
+            <li><strong>&&&</strong>: AND តុល្យភាព</li>
+            <li><strong>||</strong>: OR តុល្យភាព</li>
+            <li><strong>!</strong>: NOT តុល្យភាព</li>
+        </ul>
+        <p class="mt-2">ឧទាហរណ៍៖</p>
+        <pre class="bg-gray-800 text-white p-4 rounded-lg mt-2 overflow-x-auto overflow-x-auto">
+    <code>
+    int a = 10, b = 5;
+    bool result = (a > b && b > 0); // ពិត ប្រសិនបើលក្ខខណ្ឌទាំងពីរពិត
+    </code>
+        </pre>
+    </div>
+
+    <!-- Assignment Operators -->
+    <div id="assignment-operators" class="mt-8">
+        <h3 class="text-2xl font-semibold text-blue-600">3.4. OPERATOR_ការបញ្ជាក់តម្លៃ</h3>
+        <p class="mt-2">OPERATOR_ការបញ្ជាក់តម្លៃត្រូវបានប្រើសម្រាប់បញ្ជាក់តម្លៃទៅអថេរ។ OPERATOR_ការបញ្ជាក់មូលដ្ឋានគឺ៖</p>
+        <ul class="list-disc ml-6 mt-2">
+            <li><strong>=</strong>: ការបញ្ជាក់តម្លៃសាមញ្ញ</li>
+            <li><strong>+=</strong>: បូកនិងបញ្ជាក់</li>
+            <li><strong>-=</strong>: បន្ថយនិងបញ្ជាក់</li>
+            <li><strong>*=</strong>: គុណនិងបញ្ជាក់</li>
+            <li><strong>/=</strong>: ចែកនិងបញ្ជាក់</li>
+            <li><strong>%=</strong>: បំបែកសល់និងបញ្ជាក់</li>
+        </ul>
+        <p class="mt-2">ឧទាហរណ៍៖</p>
+        <pre class="bg-gray-800 text-white p-4 rounded-lg mt-2 overflow-x-auto overflow-x-auto">
+    <code>
+    int a = 10;
+    a += 5; // a = a + 5
+    </code>
+        </pre>
+    </div>
+
+    <!-- Bitwise Operators -->
+    <div id="bitwise-operators" class="mt-8">
+        <h3 class="text-2xl font-semibold text-blue-600">3.5. OPERATOR_បញ្ចូលជាតំណ</h3>
+        <p class="mt-2">OPERATOR_បញ្ចូលជាតំណត្រូវបានប្រើសម្រាប់ធ្វើប្រតិបត្ដិការលើប៊ីតនៃតម្លៃចំនួនគត់៖</p>
+        <ul class="list-disc ml-6 mt-2">
+            <li><strong>&amp;</strong>: AND ប៊ីត</li>
+            <li><strong>|</strong>: OR ប៊ីត</li>
+            <li><strong>^</strong>: XOR ប៊ីត</li>
+            <li><strong>~</strong>: NOT ប៊ីត</li>
+            <li><strong>&lt;&lt;</strong>: ការផ្លាស់ទីឆ្វេង</li>
+            <li><strong>&gt;&gt;</strong>: ការផ្លាស់ទីស្តាំ</li>
+        </ul>
+        <p class="mt-2">ឧទាហរណ៍៖</p>
+        <pre class="bg-gray-800 text-white p-4 rounded-lg mt-2 overflow-x-auto overflow-x-auto">
+    <code>
+    int a = 5, b = 3;
+    int result = a & b; // AND ប៊ីត
+    </code>
+        </pre>
+    </div>
+
+    <!-- Increment and Decrement -->
+    <div id="increment-decrement" class="mt-8">
+        <h3 class="text-2xl font-semibold text-blue-600">3.6. បន្ថែម និង ការបន្ថយ</h3>
+        <p class="mt-2">OPERATOR_បន្ថែម និង OPERATOR_បន្ថយត្រូវបានប្រើសម្រាប់បង្កើន ឬ កាត់បន្ថយតម្លៃអថេរដោយ 1៖</p>
+        <ul class="list-disc ml-6 mt-2">
+            <li><strong>++</strong>: OPERATOR_បន្ថែម (បង្កើនតម្លៃដោយ 1)</li>
+            <li><strong>--</strong>: OPERATOR_បន្ថយ (កាត់បន្ថយតម្លៃដោយ 1)</li>
+        </ul>
+        <p class="mt-2">ឧទាហរណ៍៖</p>
+        <pre class="bg-gray-800 text-white p-4 rounded-lg mt-2 overflow-x-auto overflow-x-auto">
+    <code>
+    int a = 5;
+    a++; // a ក្លាយជាលេខ 6
+    --a; // a ក្លាយជាលេខ 5 វិញ
+    </code>
+        </pre>
+    </div>
+
+    <!-- Conditional Operator -->
+    <div id="conditional-operator" class="mt-8">
+        <h3 class="text-2xl font-semibold text-blue-600">3.7. OPERATOR_លក្ខខណ្ឌ</h3>
+        <p class="mt-2">OPERATOR_លក្ខខណ្ឌ (OPERATOR_ ternary) គឺជាការបង្ហាញខ្លីសម្រាប់បញ្ជាក់ if-else៖</p>
+        <ul class="list-disc ml-6 mt-2">
+            <li><strong>condition ? expr1 : expr2</strong>: ប្រសិនបើលក្ខខណ្ឌពិត expr1 នឹងត្រូវបានអនុវត្តិ។ ប្រសិនបើមិនពិត expr2 នឹងត្រូវបានអនុវត្តិ។</li>
+        </ul>
+        <p class="mt-2">ឧទាហរណ៍៖</p>
+        <pre class="bg-gray-800 text-white p-4 rounded-lg mt-2 overflow-x-auto overflow-x-auto">
+    <code>
+    int a = 5;
+    int result = (a > 3) ? 10 : 20; // result នឹងមានតម្លៃ 10 ពីព្រោះលក្ខខណ្ឌពិត
+    </code>
+        </pre>
+    </div>
+</div>
+
+
+<div id="control-statements" class="py-12 px-6 overflow-y-auto">
+    <h2 class="text-3xl font-semibold text-blue-600">4. គ្រប់គ្រងប្រតិបត្តិការនៅក្នុង C</h2>
+    <p class="mt-4 text-lg">នៅក្នុងផ្នែកនេះ យើងនឹងសិក្សាពីប្រភេទនៃប្រតិបត្តិការគ្រប់គ្រងនៅក្នុងភាសា C។</p>
+
+    <!-- if Statement -->
+    <div id="if-statement" class="mt-8">
+        <h3 class="text-2xl font-semibold text-blue-600">4.1. ប្រកាស if</h3>
+        <p class="mt-2">ប្រកាស <code>if</code> ត្រូវបានប្រើដើម្បីធ្វើការត្រួតពិនិត្យលក្ខខណ្ឌមួយ។ ប្រសិនបើលក្ខខណ្ឌត្រឹមត្រូវ វានឹងអនុវត្តកូដក្នុងរយៈពេល។</p>
+        <pre class="bg-gray-800 text-white p-4 rounded-lg mt-2 overflow-x-auto">
+<code>
+#include &lt;stdio.h&gt;
+
+int main() {
+    int a = 10;
+    if (a > 5) {
+        printf("a is greater than 5\n");
+    }
+    return 0;
+}
+</code>
+        </pre>
+        <pre class="bg-gray-100 text-black p-4 rounded-lg mt-2">
+Output: a is greater than 5
+</pre>
+    </div>
+
+    <!-- else Statement -->
+    <div id="else-statement" class="mt-8">
+        <h3 class="text-2xl font-semibold text-blue-600">4.2. ប្រកាស else</h3>
+        <p class="mt-2">ប្រកាស <code>else</code> ត្រូវបានប្រើជាមួយ <code>if</code> ដើម្បីអនុវត្តកូដនៅពេលដែលលក្ខខណ្ឌ <code>if</code> មិនត្រឹមត្រូវ។</p>
+        <pre class="bg-gray-800 text-white p-4 rounded-lg mt-2 overflow-x-auto">
+<code>
+#include &lt;stdio.h&gt;
+
+int main() {
+    int a = 3;
+    if (a > 5) {
+        printf("a is greater than 5\n");
+    } else {
+        printf("a is not greater than 5\n");
+    }
+    return 0;
+}
+</code>
+        </pre>
+        <pre class="bg-gray-100 text-black p-4 rounded-lg mt-2">
+Output: a is not greater than 5
+</pre>
+    </div>
+
+    <!-- switch Statement -->
+    <div id="switch-statement" class="mt-8">
+        <h3 class="text-2xl font-semibold text-blue-600">4.3. ប្រកាស switch</h3>
+        <p class="mt-2">ប្រកាស <code>switch</code> ត្រូវបានប្រើដើម្បីធ្វើការត្រួតពិនិត្យករណីដែលមានជម្រើសជាច្រើន។</p>
+        <pre class="bg-gray-800 text-white p-4 rounded-lg mt-2 overflow-x-auto">
+<code>
+#include &lt;stdio.h&gt;
+
+int main() {
+    int day = 2;
+    switch (day) {
+        case 1:
+            printf("Monday\n");
+            break;
+        case 2:
+            printf("Tuesday\n");
+            break;
+        default:
+            printf("Invalid day\n");
+    }
+    return 0;
+}
+</code>
+        </pre>
+        <pre class="bg-gray-100 text-black p-4 rounded-lg mt-2">
+Output: Tuesday
+</pre>
+    </div>
+
+    <!-- break Statement -->
+    <div id="break-statement" class="mt-8">
+        <h3 class="text-2xl font-semibold text-blue-600">4.4. ប្រកាស break</h3>
+        <p class="mt-2">ប្រកាស <code>break</code> ត្រូវបានប្រើដើម្បីបញ្ចប់ការអនុវត្តន៍នៅក្នុងលូប និងបញ្ជូនការផ្ទេរទៅកាន់ការអនុវត្តបន្ទាប់។</p>
+        <pre class="bg-gray-800 text-white p-4 rounded-lg mt-2 overflow-x-auto">
+<code>
+#include &lt;stdio.h&gt;
+
+int main() {
+    for (int i = 0; i < 5; i++) {
+        if (i == 3) {
+            break; // Exit the loop when i is 3
+        }
+        printf("%d ", i);
+    }
+    return 0;
+}
+</code>
+        </pre>
+        <pre class="bg-gray-100 text-black p-4 rounded-lg mt-2">
+Output: 0 1 2
+</pre>
+    </div>
+
+    <!-- continue Statement -->
+    <div id="continue-statement" class="mt-8">
+        <h3 class="text-2xl font-semibold text-blue-600">4.5. ប្រកាស continue</h3>
+        <p class="mt-2">ប្រកាស <code>continue</code> ត្រូវបានប្រើដើម្បីបញ្ចប់វគ្គបច្ចុប្បន្ននៃលូប ហើយត្រឡប់ទៅកាន់ការត្រួតពិនិត្យលក្ខខណ្ឌ។</p>
+        <pre class="bg-gray-800 text-white p-4 rounded-lg mt-2 overflow-x-auto">
+<code>
+#include &lt;stdio.h&gt;
+
+int main() {
+    for (int i = 0; i < 5; i++) {
+        if (i == 3) {
+            continue; // Skip when i is 3
+        }
+        printf("%d ", i);
+    }
+    return 0;
+}
+</code>
+        </pre>
+        <pre class="bg-gray-100 text-black p-4 rounded-lg mt-2">
+Output: 0 1 2 4
+</pre>
+    </div>
+
+    <!-- goto Statement -->
+    <div id="goto-statement" class="mt-8">
+        <h3 class="text-2xl font-semibold text-blue-600">4.6. ប្រកាស goto</h3>
+        <p class="mt-2">ប្រកាស <code>goto</code> ត្រូវបានប្រើដើម្បីផ្លាស់ប្តូរទិសដៅប្រតិបត្តិការនៅក្នុងកម្មវិធីដោយផ្ទាល់។</p>
+        <pre class="bg-gray-800 text-white p-4 rounded-lg mt-2 overflow-x-auto">
+<code>
+#include &lt;stdio.h&gt;
+
+int main() {
+    int i = 0;
+start: 
+    if (i < 5) {
+        printf("%d ", i);
+        i++;
+        goto start; // Jump back to start
+    }
+    return 0;
+}
+</code>
+        </pre>
+        <pre class="bg-gray-100 text-black p-4 rounded-lg mt-2">
+Output: 0 1 2 3 4
+</pre>
+    </div>
+
+    <!-- Nested Control Structures -->
+    <div id="nested-structures" class="mt-8">
+        <h3 class="text-2xl font-semibold text-blue-600">4.7. រចនាសម្ព័ន្ធគ្រប់គ្រងដែលនៅក្នុងគ្នា</h3>
+        <p class="mt-2">ការប្រើប្រាស់គ្រប់គ្រងក្នុងគ្នាមានប្រយោជន៍បំផុតនៅពេលដែលត្រូវត្រូវការត្រួតពិនិត្យជាច្រើនក្នុងលូប។</p>
+        <pre class="bg-gray-800 text-white p-4 rounded-lg mt-2 overflow-x-auto">
+<code>
+#include &lt;stdio.h&gt;
+
+int main() {
+    for (int i = 0; i < 3; i++) {
+        for (int j = 0; j < 3; j++) {
+            printf("%d%d ", i, j);
+        }
+    }
+    return 0;
+}
+</code>
+        </pre>
+        <pre class="bg-gray-100 text-black p-4 rounded-lg mt-2">
+Output: 00 01 02 10 11 12 20 21 22
+</pre>
+    </div>
+</div>
+
+
+<div id="loops" class="py-12 px-6 overflow-y-auto">
+    <h2 class="text-3xl font-semibold text-blue-600">5. Loops in C</h2>
+    <p class="mt-4 text-lg">នៅក្នុងផ្នែកនេះ យើងនឹងសិក្សាពីប្រភេទនៃលូបនៅក្នុងភាសា C។</p>
+
+    <!-- for Loop -->
+    <div id="for-loop" class="mt-8">
+        <h3 class="text-2xl font-semibold text-blue-600">5.1. លូប for</h3>
+        <p class="mt-2">លូប <code>for</code> ត្រូវបានប្រើដើម្បីធ្វើការកំណត់ចំនួននៃការអនុវត្តន៍ជាក់លាក់។ វាអាចកំណត់ចំនួនកំណត់នៃការងារដែលត្រូវអនុវត្ត។</p>
+        <pre class="bg-gray-800 text-white p-4 rounded-lg mt-2 overflow-x-auto">
+<code>
+#include &lt;stdio.h&gt;
+
+int main() {
+    for (int i = 0; i < 5; i++) {
+        printf("%d\n", i);
+    }
+    return 0;
+}
+</code>
+        </pre>
+        <pre class="bg-gray-100 text-black p-4 rounded-lg mt-2">
+Output: 0 1 2 3 4
+</pre>
+    </div>
+
+    <!-- while Loop -->
+    <div id="while-loop" class="mt-8">
+        <h3 class="text-2xl font-semibold text-blue-600">5.2. លូប while</h3>
+        <p class="mt-2">លូប <code>while</code> ត្រូវបានប្រើដើម្បីអនុវត្តកូដឡើងវិញជាការផ្សេងៗទៅរហូតដល់លក្ខខណ្ឌមួយត្រូវបានបង្ហាញថាត្រឹមត្រូវ។</p>
+        <pre class="bg-gray-800 text-white p-4 rounded-lg mt-2 overflow-x-auto">
+<code>
+#include &lt;stdio.h&gt;
+
+int main() {
+    int i = 0;
+    while (i < 5) {
+        printf("%d\n", i);
+        i++;
+    }
+    return 0;
+}
+</code>
+        </pre>
+        <pre class="bg-gray-100 text-black p-4 rounded-lg mt-2">
+Output: 0 1 2 3 4
+</pre>
+    </div>
+
+    <!-- do-while Loop -->
+    <div id="do-while-loop" class="mt-8">
+        <h3 class="text-2xl font-semibold text-blue-600">5.3. លូប do-while</h3>
+        <p class="mt-2">លូប <code>do-while</code> ត្រូវបានប្រើដើម្បីអនុវត្តកូដមួយដំបូងប៉ុន្តែការត្រួតពិនិត្យលក្ខខណ្ឌត្រូវបានអនុវត្តក្រោយពីការអនុវត្តចុងក្រោយ។</p>
+        <pre class="bg-gray-800 text-white p-4 rounded-lg mt-2 overflow-x-auto">
+<code>
+#include &lt;stdio.h&gt;
+
+int main() {
+    int i = 0;
+    do {
+        printf("%d\n", i);
+        i++;
+    } while (i < 5);
+    return 0;
+}
+</code>
+        </pre>
+        <pre class="bg-gray-100 text-black p-4 rounded-lg mt-2">
+Output: 0 1 2 3 4
+</pre>
+    </div>
+
+    <!-- Nested Loops -->
+    <div id="nested-loops" class="mt-8">
+        <h3 class="text-2xl font-semibold text-blue-600">5.4. លូប Nested</h3>
+        <p class="mt-2">លូប Nested ត្រូវបានប្រើដើម្បីបញ្ចូលលូបនៅក្នុងលូប។ វា​មានប្រយោជន៍ក្នុងករណីដែលត្រូវការត្រួតពិនិត្យជាច្រើននៅក្នុងវគ្គប្រតិបត្តិការលូប។</p>
+        <pre class="bg-gray-800 text-white p-4 rounded-lg mt-2 overflow-x-auto">
+<code>
+#include &lt;stdio.h&gt;
+
+int main() {
+    for (int i = 0; i < 3; i++) {
+        for (int j = 0; j < 3; j++) {
+            printf("%d%d ", i, j);
+        }
+    }
+    return 0;
+}
+</code>
+        </pre>
+        <pre class="bg-gray-100 text-black p-4 rounded-lg mt-2">
+Output: 00 01 02 10 11 12 20 21 22
+</pre>
+    </div>
+
+    <!-- Infinite Loops -->
+    <div id="infinite-loops" class="mt-8">
+        <h3 class="text-2xl font-semibold text-blue-600">5.5. លូបអន្ដរក្រោយ</h3>
+        <p class="mt-2">លូបអន្ដរក្រោយត្រូវបានប្រើប្រសិនបើលក្ខខណ្ឌមិនត្រូវបានបញ្ចប់។ វាអាចត្រូវបានប្រើប្រាស់ដោយព្រមានដោយស្របតាមការប្រើប្រាស់ <code>break</code> សម្រាប់ចាកចេញពីលូប។</p>
+        <pre class="bg-gray-800 text-white p-4 rounded-lg mt-2 overflow-x-auto">
+<code>
+#include &lt;stdio.h&gt;
+
+int main() {
+    while (1) {
+        printf("This is an infinite loop\n");
+        break; // Exit the loop
+    }
+    return 0;
+}
+</code>
+        </pre>
+        <pre class="bg-gray-100 text-black p-4 rounded-lg mt-2">
+Output: This is an infinite loop
+</pre>
+    </div>
+</div>
+
+
+<div id="functions" class="py-12 px-6 overflow-y-auto">
+    <h2 class="text-3xl font-semibold text-blue-600">6. Functions in C</h2>
+    <p class="mt-4 text-lg">នៅក្នុងផ្នែកនេះ យើងនឹងសិក្សាពីមុខងារ (Functions) នៅក្នុងភាសា C។</p>
+
+    <!-- Function Declaration and Definition -->
+    <div id="function-declaration" class="mt-8">
+        <h3 class="text-2xl font-semibold text-blue-600">6.1. ការប្រាប់ និងការបង្កើតមុខងារ</h3>
+        <p class="mt-2">មុខងារ (Function) ត្រូវបានប្រើដើម្បីបែងចែកការងារនៅក្នុងកម្មវិធី។ ការប្រាប់មុខងារមានបញ្ហាទៅក្នុងកូដមុនពីការអនុវត្តន៍វា។</p>
+        <pre class="bg-gray-800 text-white p-4 rounded-lg mt-2 overflow-x-auto">
+<code>
+#include &lt;stdio.h&gt;
+
+void greet() {
+    printf("Hello, World!\n");
+}
+
+int main() {
+    greet();  // Function call
+    return 0;
+}
+</code>
+        </pre>
+        <pre class="bg-gray-100 text-black p-4 rounded-lg mt-2">
+Output: Hello, World!
+</pre>
+    </div>
+
+    <!-- Function Arguments and Return Types -->
+    <div id="arguments-return" class="mt-8">
+        <h3 class="text-2xl font-semibold text-blue-600">6.2. ប្រភេទអាគុយម៉ង់ និងប្រភេទត្រឡប់តាមមុខងារ</h3>
+        <p class="mt-2">មុខងារមានអាគុយម៉ង់ ដែលអាចប្រើក្នុងការទទួលយកទិន្នន័យមកក្នុងវា។ ប្រភេទត្រឡប់តាមមុខងារ ក៏អាចធ្វើការត្រឡប់តម្លៃមកវិញបានផងដែរ។</p>
+        <pre class="bg-gray-800 text-white p-4 rounded-lg mt-2 overflow-x-auto">
+<code>
+#include &lt;stdio.h&gt;
+
+int add(int a, int b) {
+    return a + b;
+}
+
+int main() {
+    int result = add(3, 4);
+    printf("The sum is: %d\n", result);
+    return 0;
+}
+</code>
+        </pre>
+        <pre class="bg-gray-100 text-black p-4 rounded-lg mt-2">
+Output: The sum is: 7
+</pre>
+    </div>
+
+    <!-- Recursion -->
+    <div id="recursion" class="mt-8">
+        <h3 class="text-2xl font-semibold text-blue-600">6.3. ការហៅដោយខ្លួនឯង</h3>
+        <p class="mt-2">Recursion គឺជាការហៅមុខងារមួយដោយខ្លួនឯង ដើម្បីដោះសោរាបញ្ហាដែលស្រដៀងគ្នា។</p>
+        <pre class="bg-gray-800 text-white p-4 rounded-lg mt-2 overflow-x-auto">
+<code>
+#include &lt;stdio.h&gt;
+
+int factorial(int n) {
+    if (n == 0) {
+        return 1;
+    } else {
+        return n * factorial(n - 1);  // Recursive call
+    }
+}
+
+int main() {
+    int result = factorial(5);
+    printf("Factorial of 5 is: %d\n", result);
+    return 0;
+}
+</code>
+        </pre>
+        <pre class="bg-gray-100 text-black p-4 rounded-lg mt-2">
+Output: Factorial of 5 is: 120
+</pre>
+    </div>
+
+    <!-- Call by Value vs. Call by Reference -->
+    <div id="call-by-value" class="mt-8">
+        <h3 class="text-2xl font-semibold text-blue-600">6.4. ការហៅតាមតម្លៃ និងការហៅតាមយោង</h3>
+        <p class="mt-2">ការហៅតាមតម្លៃ និងការហៅតាមយោងមានភាពខុសគ្នាក្នុងការផ្លាស់ប្តូរទិន្នន័យនៅក្នុងមុខងារ។</p>
+        <pre class="bg-gray-800 text-white p-4 rounded-lg mt-2 overflow-x-auto">
+<code>
+#include &lt;stdio.h&gt;
+
+void byValue(int a) {
+    a = 20;  // Only modifies the local copy
+}
+
+void byReference(int *a) {
+    *a = 20;  // Modifies the original value
+}
+
+int main() {
+    int x = 10;
+    byValue(x);
+    printf("Value after byValue: %d\n", x);  // 10
+
+    byReference(&x);
+    printf("Value after byReference: %d\n", x);  // 20
+    return 0;
+}
+</code>
+        </pre>
+        <pre class="bg-gray-100 text-black p-4 rounded-lg mt-2">
+Output: 
+Value after byValue: 10
+Value after byReference: 20
+</pre>
+    </div>
+
+    <!-- Function Prototypes -->
+    <div id="prototypes" class="mt-8">
+        <h3 class="text-2xl font-semibold text-blue-600">6.5. ប្រភេទមុខងារ</h3>
+        <p class="mt-2">ប្រភេទមុខងារ (Function Prototypes) ត្រូវបានប្រើដើម្បីស្នើរសុំការប្រាប់ពីបែបបទនៃមុខងារ មុនការអនុវត្តន៍វា។</p>
+        <pre class="bg-gray-800 text-white p-4 rounded-lg mt-2 overflow-x-auto">
+<code>
+#include &lt;stdio.h&gt;
+
+// Function prototype
+void greet();
+
+int main() {
+    greet();  // Function call
+    return 0;
+}
+
+void greet() {
+    printf("Hello, World!\n");
+}
+</code>
+        </pre>
+        <pre class="bg-gray-100 text-black p-4 rounded-lg mt-2">
+Output: Hello, World!
+</pre>
+    </div>
+
+    <!-- Header Files and Libraries -->
+    <div id="header-files" class="mt-8">
+        <h3 class="text-2xl font-semibold text-blue-600">6.6. កំណត់ឯកសារ និងបណ្ណាល័យ</h3>
+        <p class="mt-2">ឯកសារ header និងបណ្ណាល័យ (Libraries) ត្រូវបានប្រើដើម្បីផ្តល់សេវាកម្មនិងមុខងារផ្សេងៗដែលអាចអនុវត្តបាន។</p>
+        <pre class="bg-gray-800 text-white p-4 rounded-lg mt-2 overflow-x-auto">
+<code>
+#include &lt;stdio.h&gt>  // Standard library for input-output functions
+#include &lt;math.h&gt;   // Library for mathematical functions
+
+int main() {
+    printf("Square root of 16 is: %.2f\n", sqrt(16));  // sqrt() function from math.h
+    return 0;
+}
+</code>
+        </pre>
+        <pre class="bg-gray-100 text-black p-4 rounded-lg mt-2">
+Output: Square root of 16 is: 4.00
+</pre>
+    </div>
+
+    <!-- Standard Library Functions -->
+    <div id="standard-functions" class="mt-8">
+        <h3 class="text-2xl font-semibold text-blue-600">6.7. មុខងារបណ្ណាល័យស្តង់ដារ</h3>
+        <p class="mt-2">មុខងារបណ្ណាល័យស្តង់ដារ (Standard Library Functions) នៅក្នុងភាសា C ផ្តល់ជូននូវមុខងារដែលមានប្រយោជន៍សម្រាប់ការងារផ្សេងៗគ្នា។</p>
+        <pre class="bg-gray-800 text-white p-4 rounded-lg mt-2 overflow-x-auto">
+<code>
+#include &lt;stdio.h&gt>
+
+int main() {
+    char str[] = "Hello, World!";
+    printf("Length of string: %lu\n", strlen(str));  // strlen() function from string.h
+    return 0;
+}
+</code>
+        </pre>
+        <pre class="bg-gray-100 text-black p-4 rounded-lg mt-2">
+Output: Length of string: 13
+</pre>
+    </div>
+</div>
+
+
+<div id="arrays" class="py-12 px-6 overflow-y-auto">
+    <h2 class="text-3xl font-semibold text-blue-600">7. Arrays in C</h2>
+    <p class="mt-4 text-lg">នៅក្នុងផ្នែកនេះ យើងនឹងសិក្សាពីអារេ (Arrays) នៅក្នុងភាសា C។</p>
+
+    <!-- One-dimensional Arrays -->
+    <div id="one-dimensional-arrays" class="mt-8">
+        <h3 class="text-2xl font-semibold text-blue-600">7.1. អារេមួយវិមាត្រ</h3>
+        <p class="mt-2">អារេមួយវិមាត្រគឺជាការប្រមូលគ្នានៃតម្លៃដែលមានប្រភេទដូចគ្នា។ អារេមួយមិតិយ៉ាងសាមញ្ញនឹងមានកូដដូចខាងក្រោម។</p>
+        <pre class="bg-gray-800 text-white p-4 rounded-lg mt-2 overflow-x-auto">
+<code>
+#include &lt;stdio.h&gt;
+
+int main() {
+    int arr[5] = {1, 2, 3, 4, 5};  // One-dimensional array
+    for (int i = 0; i < 5; i++) {
+        printf("%d ", arr[i]);  // Access elements using index
+    }
+    return 0;
+}
+</code>
+        </pre>
+        <pre class="bg-gray-100 text-black p-4 rounded-lg mt-2">
+Output: 1 2 3 4 5
+</pre>
+    </div>
+
+    <!-- Multi-dimensional Arrays -->
+    <div id="multi-dimensional-arrays" class="mt-8">
+        <h3 class="text-2xl font-semibold text-blue-600">7.2. អារេពហុវិមាត្រ</h3>
+        <p class="mt-2">អារេពហុវិមាត្រគឺជាអារេដែលមានជម្រើសតិចតួចជាច្រើន (ធម្មតាជាម៉ាត្រិក)។ អារេនេះអាចប្រើបានដើម្បីផ្ទុកទិន្នន័យដូចជា តារាងលេខ។</p>
+        <pre class="bg-gray-800 text-white p-4 rounded-lg mt-2 overflow-x-auto">
+<code>
+#include &lt;stdio.h&gt;
+
+int main() {
+    int arr[2][3] = {{1, 2, 3}, {4, 5, 6}};  // 2x3 two-dimensional array
+    for (int i = 0; i < 2; i++) {
+        for (int j = 0; j < 3; j++) {
+            printf("%d ", arr[i][j]);  // Accessing 2D array elements
+        }
+        printf("\n");
+    }
+    return 0;
+}
+</code>
+        </pre>
+        <pre class="bg-gray-100 text-black p-4 rounded-lg mt-2">
+Output: 
+1 2 3 
+4 5 6
+</pre>
+    </div>
+
+    <!-- Array Initialization -->
+    <div id="array-initialization" class="mt-8">
+        <h3 class="text-2xl font-semibold text-blue-600">7.3. ការកំណត់អារេ</h3>
+        <p class="mt-2">ការកំណត់អារេគឺជាការបញ្ជាក់តម្លៃដំបូងសម្រាប់អារេ។ អ្នកអាចកំណត់តម្លៃដំបូងបានដោយប្រើសញ្ញាបញ្ជូន `{}`។</p>
+        <pre class="bg-gray-800 text-white p-4 rounded-lg mt-2 overflow-x-auto">
+<code>
+#include &lt;stdio.h&gt;
+
+int main() {
+    int arr[5] = {1, 2, 3};  // Array initialized with partial values
+    for (int i = 0; i < 5; i++) {
+        printf("%d ", arr[i]);  // Remaining values will be set to 0
+    }
+    return 0;
+}
+</code>
+        </pre>
+        <pre class="bg-gray-100 text-black p-4 rounded-lg mt-2">
+Output: 1 2 3 0 0
+</pre>
+    </div>
+
+    <!-- Passing Arrays to Functions -->
+    <div id="passing-arrays" class="mt-8">
+        <h3 class="text-2xl font-semibold text-blue-600">7.4. ការផ្ទេរអារេទៅមុខងារ</h3>
+        <p class="mt-2">អ្នកអាចផ្ទេរអារេទៅមុខងារ ដោយផ្ទេរតែអាសយដ្ឋាននៃអារេ។</p>
+        <pre class="bg-gray-800 text-white p-4 rounded-lg mt-2 overflow-x-auto">
+<code>
+#include &lt;stdio.h&gt;
+
+void printArray(int arr[], int size) {
+    for (int i = 0; i < size; i++) {
+        printf("%d ", arr[i]);
+    }
+}
+
+int main() {
+    int arr[5] = {1, 2, 3, 4, 5};
+    printArray(arr, 5);  // Passing array to function
+    return 0;
+}
+</code>
+        </pre>
+        <pre class="bg-gray-100 text-black p-4 rounded-lg mt-2">
+Output: 1 2 3 4 5
+</pre>
+    </div>
+
+    <!-- Array Manipulation -->
+    <div id="array-manipulation" class="mt-8">
+        <h3 class="text-2xl font-semibold text-blue-600">7.5. ការបដិសេធអារេ</h3>
+        <p class="mt-2">ការបដិសេធអារេអាចមានប្រយោជន៍ដើម្បីកែប្រែទិន្នន័យក្នុងអារេ។ ការបដិសេធអារេអាចធ្វើការផ្លាស់ប្តូរ តម្លៃធាតុនៃអារេ និងគ្រប់គ្រងទិន្នន័យដោយប្រើកូដរួមផ្សំ។</p>
+        <pre class="bg-gray-800 text-white p-4 rounded-lg mt-2 overflow-x-auto">
+<code>
+#include &lt;stdio.h&gt;
+
+int main() {
+    int arr[5] = {1, 2, 3, 4, 5};
+    for (int i = 0; i < 5; i++) {
+        arr[i] = arr[i] * 2;  // Multiply each element by 2
+    }
+
+    for (int i = 0; i < 5; i++) {
+        printf("%d ", arr[i]);  // Display updated array
+    }
+    return 0;
+}
+</code>
+        </pre>
+        <pre class="bg-gray-100 text-black p-4 rounded-lg mt-2">
+Output: 2 4 6 8 10
+</pre>
+    </div>
+</div>
+
+
+
+<div id="pointers" class="py-12 px-6 overflow-y-auto">
+    <h2 class="text-3xl font-semibold text-blue-600">8. Pointers in C</h2>
+    <p class="mt-4 text-lg">នៅក្នុងផ្នែកនេះ យើងនឹងសិក្សាពីPointer (Pointers) នៅក្នុងភាសា C។</p>
+
+   
+    <div id="introduction-to-pointers" class="mt-8">
+        <h3 class="text-2xl font-semibold text-blue-600">8.1. ការណែនាំអំពីPointer</h3>
+        <p class="mt-2">Pointer គឺជាអថេរដែលផ្ទុកអាសយដ្ឋាននៃអថេរផ្សេងទៀត។ យើងប្រើPointer ដើម្បីយកអាសយដ្ឋាននៃអថេរមួយ ហើយអាចប្រើវាដើម្បីចូលដំណើរការទិន្នន័យក្នុងអថេរនោះ។</p>
+        <pre class="bg-gray-800 text-white p-4 rounded-lg mt-2 overflow-x-auto">
+<code>
+#include &lt;stdio.h&gt;
+
+int main() {
+    int a = 10;
+    int *ptr = &a;  // ptr is a pointer to a
+    printf("Value of a: %d\n", a);
+    printf("Value through ptr: %d\n", *ptr);  // Dereferencing the pointer
+    return 0;
+}
+</code>
+        </pre>
+        <pre class="bg-gray-100 text-black p-4 rounded-lg mt-2">
+Output: 
+Value of a: 10
+Value through ptr: 10
+</pre>
+    </div>
+
+   
+    <div id="pointer-declaration" class="mt-8">
+        <h3 class="text-2xl font-semibold text-blue-600">8.2. ការប្រកាស និង ការបង្កើតPointer</h3>
+        <p class="mt-2">ក្នុងភាសា C, Pointerត្រូវបានប្រកាសដោយប្រើសញ្ញា <code>*</code>។ អ្នកអាចបង្កើតPointer និងកំណត់អាសយដ្ឋានឱ្យវាបានដោយប្រើសញ្ញា <code>&</code> ។</p>
+        <pre class="bg-gray-800 text-white p-4 rounded-lg mt-2 overflow-x-auto">
+<code>
+#include &lt;stdio.h&gt;
+
+int main() {
+    int a = 5;
+    int *ptr = &a;  // Pointer initialization with address of a
+    printf("Address of a: %p\n", (void*)ptr);  // Print address
+    return 0;
+}
+</code>
+        </pre>
+        <pre class="bg-gray-100 text-black p-4 rounded-lg mt-2">
+Output: 
+Address of a: <address_value>
+</pre>
+    </div>
+
+    
+    <div id="pointers-and-arrays" class="mt-8">
+        <h3 class="text-2xl font-semibold text-blue-600">8.3. Pointer និង អារេ</h3>
+        <p class="mt-2">Pointerនឹងអារេគឺជាគ្រឿងភ្ជាប់គ្នាដោយពិតប្រាកដ។ យើងអាចប្រើPointer ដើម្បីចូលទៅកាន់ធាតុក្នុងអារេ។</p>
+        <pre class="bg-gray-800 text-white p-4 rounded-lg mt-2 overflow-x-auto">
+<code>
+#include &lt;stdio.h&gt;
+
+int main() {
+    int arr[3] = {10, 20, 30};
+    int *ptr = arr;  // Pointer points to the first element of arr
+    for (int i = 0; i < 3; i++) {
+        printf("%d ", *(ptr + i));  // Dereference pointer to access array elements
+    }
+    return 0;
+}
+</code>
+        </pre>
+        <pre class="bg-gray-100 text-black p-4 rounded-lg mt-2">
+Output: 10 20 30
+</pre>
+    </div>
+
+    
+    <div id="pointers-to-functions" class="mt-8">
+        <h3 class="text-2xl font-semibold text-blue-600">8.4. Pointer ទៅមុខងារ</h3>
+        <p class="mt-2">អ្នកអាចប្រើPointer ដើម្បីចូលទៅកាន់មុខងារ និងហៅមុខងារនោះតាមអាសយដ្ឋាន។</p>
+        <pre class="bg-gray-800 text-white p-4 rounded-lg mt-2 overflow-x-auto">
+<code>
+#include &lt;stdio.h&gt;
+
+void greet() {
+    printf("Hello, World!\n");
+}
+
+int main() {
+    void (*ptr)() = greet;  // Pointer to function greet
+    ptr();  // Call function using pointer
+    return 0;
+}
+</code>
+        </pre>
+        <pre class="bg-gray-100 text-black p-4 rounded-lg mt-2">
+Output: 
+Hello, World!
+</pre>
+    </div>
+
+   
+    <div id="dynamic-memory-allocation" class="mt-8">
+        <h3 class="text-2xl font-semibold text-blue-600">8.5. ការបញ្ជូនសម្ភារៈស្មើ</h3>
+        <p class="mt-2">ការបញ្ជូនសម្ភារៈស្មើមានប្រយោជន៍នៅពេលដែលអ្នកត្រូវការបង្កើតអត្ថបទមួយដែលមានទំហំមិនប្រាកដក្នុងរយៈពេលបណ្តោះអាសន្ន។</p>
+        <pre class="bg-gray-800 text-white p-4 rounded-lg mt-2 overflow-x-auto">
+<code>
+#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+
+int main() {
+    int *ptr = (int *)malloc(5 * sizeof(int));  // Allocate memory for 5 integers
+    for (int i = 0; i < 5; i++) {
+        ptr[i] = i + 1;  // Initialize dynamically allocated memory
+    }
+
+    for (int i = 0; i < 5; i++) {
+        printf("%d ", ptr[i]);  // Print dynamically allocated array
+    }
+
+    free(ptr);  // Free allocated memory
+    return 0;
+}
+</code>
+        </pre>
+        <pre class="bg-gray-100 text-black p-4 rounded-lg mt-2">
+Output: 
+1 2 3 4 5
+</pre>
+    </div>
+
+   
+    <div id="pointer-arithmetic" class="mt-8">
+        <h3 class="text-2xl font-semibold text-blue-600">8.6. គណិតវិទ្យាPointer</h3>
+        <p class="mt-2">Pointerអាចប្រើសម្រាប់ធ្វើការគណិតវិទ្យា (arithmetics) ដើម្បីបញ្ជូនទៅឬបញ្ចេញនូវអាសយដ្ឋាននៃអថេរផ្សេងៗ។</p>
+        <pre class="bg-gray-800 text-white p-4 rounded-lg mt-2 overflow-x-auto">
+<code>
+#include &lt;stdio.h&gt;
+
+int main() {
+    int arr[3] = {1, 2, 3};
+    int *ptr = arr;
+    printf("%d ", *(ptr + 1));  // Pointer arithmetic to access second element
+    return 0;
+}
+</code>
+        </pre>
+        <pre class="bg-gray-100 text-black p-4 rounded-lg mt-2">
+Output: 
+2
+</pre>
+    </div>
+
+    
+    <div id="pointers-to-structures" class="mt-8">
+        <h3 class="text-2xl font-semibold text-blue-600">8.7. Pointer ទៅStructures និង អារេ</h3>
+        <p class="mt-2">អ្នកអាចប្រើPointer ដើម្បីចូលទៅកាន់ប្រភេទទិន្នន័យស្មុគស្មាញដូចជា structures និងអារេ។</p>
+        <pre class="bg-gray-800 text-white p-4 rounded-lg mt-2 overflow-x-auto">
+<code>
+#include &lt;stdio.h&gt;
+
+struct Person {
+    char name[50];
+    int age;
+};
+
+int main() {
+    struct Person p1 = {"John", 30};
+    struct Person *ptr = &p1;
+    printf("Name: %s, Age: %d\n", ptr->name, ptr->age);  // Access struct members using pointer
+    return 0;
+}
+</code>
+        </pre>
+        <pre class="bg-gray-100 text-black p-4 rounded-lg mt-2">
+Output: 
+Name: John, Age: 30
+</pre>
+    </div>
+</div>
+
+
+<div id="structures-unions" class="py-12 px-6 overflow-y-auto">
+    <h2 class="text-3xl font-semibold text-blue-600">9. Structures and Unions</h2>
+    <p class="mt-4 text-lg">នៅក្នុងផ្នែកនេះ យើងនឹងសិក្សាពីស្រទាប់ និងអង្គចងចាំ (Structures and Unions) នៅក្នុងភាសា C។</p>
+
+    
+    <div id="introduction-to-structures" class="mt-8">
+        <h3 class="text-2xl font-semibold text-blue-600">9.1. ការណែនាំអំពីស្រទាប់</h3>
+        <p class="mt-2">ស្រទាប់ (Structures) គឺជាការបញ្ចូលតម្លៃមួយចំនួនជាភាគរយ ក្នុងអង្គតម្លៃផ្សេងៗ។ អ្នកអាចប្រើស្រទាប់ដើម្បីធ្វើការរួមបញ្ចូលទិន្នន័យដែលមានប្រភេទផ្សេងៗគ្នា។</p>
+        <pre class="bg-gray-800 text-white p-4 rounded-lg mt-2 overflow-x-auto">
+<code>
+#include &lt;stdio.h&gt;
+
+struct Person {
+    char name[50];
+    int age;
+};
+
+int main() {
+    struct Person person1 = {"John", 30};
+    printf("Name: %s\n", person1.name);
+    printf("Age: %d\n", person1.age);
+    return 0;
+}
+</code>
+        </pre>
+        <pre class="bg-gray-100 text-black p-4 rounded-lg mt-2">
+Output: 
+Name: John
+Age: 30
+</pre>
+    </div>
+
+    
+    <div id="structure-declaration-initialization" class="mt-8">
+        <h3 class="text-2xl font-semibold text-blue-600">9.2. ការបញ្ចូលនិងកំណត់តម្លៃស្រទាប់</h3>
+        <p class="mt-2">ការបញ្ចូលស្រទាប់ជាដើម និងការកំណត់តម្លៃប្រើរបៀបដូចខាងក្រោម។</p>
+        <pre class="bg-gray-800 text-white p-4 rounded-lg mt-2 overflow-x-auto">
+<code>
+#include &lt;stdio.h&gt;
+
+struct Student {
+    char name[50];
+    int rollNumber;
+    float marks;
+};
+
+int main() {
+    struct Student student1 = {"Alice", 101, 90.5};
+    printf("Name: %s\n", student1.name);
+    printf("Roll Number: %d\n", student1.rollNumber);
+    printf("Marks: %.2f\n", student1.marks);
+    return 0;
+}
+</code>
+        </pre>
+        <pre class="bg-gray-100 text-black p-4 rounded-lg mt-2">
+Output: 
+Name: Alice
+Roll Number: 101
+Marks: 90.50
+</pre>
+    </div>
+
+    
+    <div id="accessing-structure-members" class="mt-8">
+        <h3 class="text-2xl font-semibold text-blue-600">9.3. ការចូលប្រើសមាជិកស្រទាប់</h3>
+        <p class="mt-2">ដើម្បីចូលប្រើសមាជិកស្រទាប់ អ្នកត្រូវប្រើសញ្ញាសមូហធិបតេយ្យ `.` ។</p>
+        <pre class="bg-gray-800 text-white p-4 rounded-lg mt-2 overflow-x-auto">
+<code>
+#include &lt;stdio.h&gt;
+
+struct Person {
+    char name[50];
+    int age;
+};
+
+int main() {
+    struct Person person1 = {"John", 30};
+    printf("Name: %s\n", person1.name);  // Accessing structure member
+    printf("Age: %d\n", person1.age);
+    return 0;
+}
+</code>
+        </pre>
+        <pre class="bg-gray-100 text-black p-4 rounded-lg mt-2">
+Output: 
+Name: John
+Age: 30
+</pre>
+    </div>
+
+   
+    <div id="nested-structures" class="mt-8">
+        <h3 class="text-2xl font-semibold text-blue-600">9.4. ស្រទាប់ជាប់គ្នា</h3>
+        <p class="mt-2">អ្នកអាចប្រើស្រទាប់នៅក្នុងស្រទាប់ផ្សេងទៀត ដើម្បីផ្ទុកព័ត៌មានបន្ថែម។ នេះអាចធ្វើបានតាមរយៈការបញ្ចូលរបស់ស្រទាប់ដទៃ។</p>
+        <pre class="bg-gray-800 text-white p-4 rounded-lg mt-2 overflow-x-auto">
+<code>
+#include &lt;stdio.h&gt;
+
+struct Date {
+    int day;
+    int month;
+    int year;
+};
+
+struct Person {
+    char name[50];
+    struct Date birthDate;  // Nested structure
+};
+
+int main() {
+    struct Person person1 = {"John", {15, 5, 1990}};
+    printf("Name: %s\n", person1.name);
+    printf("Birth Date: %d/%d/%d\n", person1.birthDate.day, person1.birthDate.month, person1.birthDate.year);
+    return 0;
+}
+</code>
+        </pre>
+        <pre class="bg-gray-100 text-black p-4 rounded-lg mt-2">
+Output: 
+Name: John
+Birth Date: 15/5/1990
+</pre>
+    </div>
+
+    <!-- Unions in C -->
+    <div id="unions-in-c" class="mt-8">
+        <h3 class="text-2xl font-semibold text-blue-600">9.5. អង្គចងចាំក្នុង C</h3>
+        <p class="mt-2">អង្គចងចាំ (Union) គឺជា​ដំណើរការដែលអនុញ្ញាតឲ្យមានការប្រើប្រាស់ប្រភេទទិន្នន័យជាច្រើនក្នុងមួយផ្នែកតែម្ដង។ តែការប្រើប្រាស់ទិន្នន័យជាច្រើនប្រភេទក្នុងចំណោមវា គួរតែមានទំហំតែមួយ។</p>
+        <pre class="bg-gray-800 text-white p-4 rounded-lg mt-2 overflow-x-auto">
+<code>
+#include &lt;stdio.h&gt;
+
+union Data {
+    int i;
+    float f;
+    char str[20];
+};
+
+int main() {
+    union Data data;
+    data.i = 10;
+    printf("Data as integer: %d\n", data.i);
+    data.f = 220.5;
+    printf("Data as float: %.2f\n", data.f);
+    return 0;
+}
+</code>
+        </pre>
+        <pre class="bg-gray-100 text-black p-4 rounded-lg mt-2">
+Output: 
+Data as integer: 10
+Data as float: 220.50
+</pre>
+    </div>
+
+    <!-- Differences Between Structures and Unions -->
+    <div id="differences-between-structures-unions" class="mt-8">
+        <h3 class="text-2xl font-semibold text-blue-600">9.6. ការប្រៀបធៀបរវាងស្រទាប់ និងអង្គចងចាំ</h3>
+        <p class="mt-2">មានការប្រៀបធៀបមួយចំនួនរវាងស្រទាប់ និងអង្គចងចាំ។ ភាពខុសគ្នាដ៏សំខាន់គឺថាស្រទាប់ត្រូវបានប្រើដើម្បីផ្ទុកទិន្នន័យពីប្រភេទផ្សេងៗគ្នា ហើយទាំងអស់មានតម្លៃដែលត្រូវបានរក្សាទុកជាដំណាក់កាល។ តែអង្គចងចាំ គឺស្តាប់តែប្រភេទទិន្នន័យមួយគត់ នៅពេលនោះ។</p>
+    </div>
+
+</div>
+
+
+<div id="file-handling" class="py-12 px-6 overflow-y-auto">
+    <h2 class="text-3xl font-semibold text-blue-600">10. File Handling</h2>
+    <p class="mt-4 text-lg">នៅក្នុងផ្នែកនេះ យើងនឹងសិក្សាពីការដោះសោនិងការប្រតិបត្តិការពីឯកសារ (File Handling) នៅក្នុងភាសា C។</p>
+
+    <!-- Introduction to File Handling -->
+    <div id="introduction-to-file-handling" class="mt-8">
+        <h3 class="text-2xl font-semibold text-blue-600">10.1. ការណែនាំអំពីការដោះសោនឯកសារ</h3>
+        <p class="mt-2">File Handling គឺជាការប្រើប្រាស់ឯកសារជាមួយភាសា C ដើម្បីអាន បញ្ចូល ឬលុបព័ត៌មានពីឯកសារ។ ឯកសារនៅក្នុង C គឺអាចសរសេរ និងអានបាន។</p>
+        <pre class="bg-gray-800 text-white p-4 rounded-lg mt-2 overflow-x-auto">
+<code>
+#include &lt;stdio.h&gt;
+
+int main() {
+    FILE *file = fopen("file.txt", "w");  // Open a file for writing
+    if (file != NULL) {
+        fprintf(file, "Hello, world!");  // Write to the file
+        fclose(file);  // Close the file
+    }
+    return 0;
+}
+</code>
+        </pre>
+        <pre class="bg-gray-100 text-black p-4 rounded-lg mt-2">
+Output: (Creates a file named "file.txt" with the content "Hello, world!")
+</pre>
+    </div>
+
+    <!-- File Operations: fopen, fclose, fread, fwrite -->
+    <div id="file-operations" class="mt-8">
+        <h3 class="text-2xl font-semibold text-blue-600">10.2. ប្រតិបត្តិការនៅលើឯកសារ: fopen, fclose, fread, fwrite</h3>
+        <p class="mt-2">ភាសា C ផ្តល់នូវមុខងារផ្សេងៗដើម្បីអាន និងសរសេរ ទិន្នន័យទៅក្នុងឯកសារ។ ការប្រើប្រាស់មុខងារ fopen() និង fclose() សម្រាប់បើក និងបិទឯកសារ និង fread(), fwrite() សម្រាប់អាន និងសរសេរ ទិន្នន័យ។</p>
+        <pre class="bg-gray-800 text-white p-4 rounded-lg mt-2 overflow-x-auto">
+<code>
+#include &lt;stdio.h&gt;
+
+int main() {
+    FILE *file = fopen("file.txt", "r");  // Open file for reading
+    char str[100];
+    if (file != NULL) {
+        fread(str, sizeof(char), 100, file);  // Read from the file
+        printf("Read content: %s\n", str);
+        fclose(file);  // Close the file
+    }
+    return 0;
+}
+</code>
+        </pre>
+        <pre class="bg-gray-100 text-black p-4 rounded-lg mt-2">
+Output: 
+Read content: Hello, world!
+</pre>
+    </div>
+
+    <!-- File Pointers and Modes -->
+    <div id="file-pointers-modes" class="mt-8">
+        <h3 class="text-2xl font-semibold text-blue-600">10.3. អាសយដ្ឋានឯកសារ និងមូដ</h3>
+        <p class="mt-2">អ្នកអាចប្រើមុខងារ fopen() ដើម្បីបើកឯកសារជាមួយមូដផ្សេងៗ។ មូដទាំងនេះអាចជាផ្នែកអាន ('r'), សរសេរ ('w'), ឬបន្ថែម ('a') ទៅក្នុងឯកសារ។</p>
+        <pre class="bg-gray-800 text-white p-4 rounded-lg mt-2 overflow-x-auto">
+<code>
+#include &lt;stdio.h&gt;
+
+int main() {
+    FILE *file = fopen("file.txt", "w");  // Open file in write mode
+    if (file != NULL) {
+        fprintf(file, "This is a test.");
+        fclose(file);  // Close the file
+    }
+    return 0;
+}
+</code>
+        </pre>
+        <pre class="bg-gray-100 text-black p-4 rounded-lg mt-2">
+Output: (Creates or overwrites "file.txt" with the text "This is a test.")
+</pre>
+    </div>
+
+    <!-- Reading and Writing Text Files -->
+    <div id="reading-writing-text-files" class="mt-8">
+        <h3 class="text-2xl font-semibold text-blue-600">10.4. អាន និងសរសេរឯកសារប្រើអក្សរ</h3>
+        <p class="mt-2">ការអាន និងសរសេរឯកសារដោយប្រើអក្សរនៅក្នុង C ត្រូវបានធ្វើដោយប្រើមុខងារ fopen(), fwrite(), fread() និង fclose()។</p>
+        <pre class="bg-gray-800 text-white p-4 rounded-lg mt-2 overflow-x-auto">
+<code>
+#include &lt;stdio.h&gt;
+
+int main() {
+    FILE *file = fopen("file.txt", "r");  // Open file in read mode
+    char ch;
+    if (file != NULL) {
+        while ((ch = fgetc(file)) != EOF) {  // Read character by character
+            putchar(ch);
+        }
+        fclose(file);  // Close the file
+    }
+    return 0;
+}
+</code>
+        </pre>
+        <pre class="bg-gray-100 text-black p-4 rounded-lg mt-2">
+Output: 
+Content of the file displayed character by character
+</pre>
+    </div>
+
+    <!-- Error Handling in File Operations -->
+    <div id="error-handling-file-operations" class="mt-8">
+        <h3 class="text-2xl font-semibold text-blue-600">10.5. ការដោះសោនកំហុសក្នុងប្រតិបត្តិការឯកសារ</h3>
+        <p class="mt-2">ការដោះសោនកំហុសនៅក្នុងប្រតិបត្តិការឯកសារអាចធ្វើបានដោយប្រើមុខងារដូចជា `fopen()` ដែលត្រឡប់តែបែបតាមឯកសារបើកបានឬមិនបាន និងផ្តល់ព័ត៌មានបន្ថែមពាក់ព័ន្ធក្នុងករណីមិនអាចបើកឯកសារ។</p>
+        <pre class="bg-gray-800 text-white p-4 rounded-lg mt-2 overflow-x-auto">
+<code>
+#include &lt;stdio.h&gt;
+
+int main() {
+    FILE *file = fopen("nonexistent.txt", "r");  // Try to open a non-existent file
+    if (file == NULL) {
+        printf("Error: Could not open file.\n");
+    } else {
+        fclose(file);
+    }
+    return 0;
+}
+</code>
+        </pre>
+        <pre class="bg-gray-100 text-black p-4 rounded-lg mt-2">
+Output: 
+Error: Could not open file.
+</pre>
+    </div>
+
+    <!-- Binary File Handling -->
+    <div id="binary-file-handling" class="mt-8">
+        <h3 class="text-2xl font-semibold text-blue-600">10.6. ការដោះសោនឯកសារប្រភេទបាញ់ (Binary Files)</h3>
+        <p class="mt-2">ការប្រើប្រាស់ឯកសារប្រភេទបាញ់ (Binary) អាចធ្វើបានដោយប្រើមុខងារ fopen() ដោយប្រើមូដ "wb" សម្រាប់សរសេរ និង "rb" សម្រាប់អាន។</p>
+        <pre class="bg-gray-800 text-white p-4 rounded-lg mt-2 overflow-x-auto">
+<code>
+#include &lt;stdio.h&gt;
+
+int main() {
+    FILE *file = fopen("data.bin", "wb");  // Open binary file for writing
+    int num = 1234;
+    fwrite(&num, sizeof(num), 1, file);  // Write binary data to file
+    fclose(file);  // Close the file
+
+    file = fopen("data.bin", "rb");  // Open binary file for reading
+    fread(&num, sizeof(num), 1, file);  // Read binary data from file
+    printf("Read number: %d\n", num);
+    fclose(file);
+    return 0;
+}
+</code>
+        </pre>
+        <pre class="bg-gray-100 text-black p-4 rounded-lg mt-2">
+Output: 
+Read number: 1234
+</pre>
+    </div>
+</div>
+
+
+
+
+<div id="dynamic-memory-allocation" class="py-12 px-6 overflow-y-auto">
+    <h2 class="text-3xl font-semibold text-blue-600">11. Dynamic Memory Allocation</h2>
+    <p class="mt-4 text-lg">នៅក្នុងផ្នែកនេះ យើងនឹងសិក្សាពីការបែងចែកសម្ភារៈនៅលើចន្លោះម៉ាស៊ីនយ៉ាងឥតកំណត់ (Dynamic Memory Allocation) នៅក្នុងភាសា C។</p>
+
+    <!-- Introduction to Dynamic Memory -->
+    <div id="introduction-to-dynamic-memory" class="mt-8">
+        <h3 class="text-2xl font-semibold text-blue-600">11.1. ការណែនាំអំពីសម្ភារៈឥតកំណត់</h3>
+        <p class="mt-2">Dynamic Memory Allocation គឺជាការបែងចែកអង្គចិត្តនៃសម្ភារៈមួយនៅពេលកម្មវិធីកំពុងដំណើរការដោយប្រើមុខងារ malloc(), calloc(), realloc() និង free()។</p>
+        <pre class="bg-gray-800 text-white p-4 rounded-lg mt-2 overflow-x-auto">
+<code>
+#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+
+int main() {
+    int *ptr;
+    ptr = (int*) malloc(sizeof(int));  // Allocate memory for one integer
+    if (ptr != NULL) {
+        *ptr = 100;
+        printf("Value: %d\n", *ptr);
+        free(ptr);  // Free dynamically allocated memory
+    }
+    return 0;
+}
+</code>
+        </pre>
+        <pre class="bg-gray-100 text-black p-4 rounded-lg mt-2">
+Output: 
+Value: 100
+</pre>
+    </div>
+
+    <!-- malloc(), calloc(), realloc(), and free() -->
+    <div id="malloc-calloc-realloc-free" class="mt-8">
+        <h3 class="text-2xl font-semibold text-blue-600">11.2. malloc(), calloc(), realloc(), and free()</h3>
+        <p class="mt-2">មុខងារ malloc() និង calloc() ត្រូវបានប្រើដើម្បីបែងចែកអង្គចិត្តម៉ាស៊ីនសម្រាប់ទិន្នន័យដែលមិនបានកំណត់ពីមុន (Dynamic Memory). realloc() ត្រូវបានប្រើដើម្បីបន្ថែមឬកាត់បន្ថយទំហំមាតិកាដែលបានបែងចែក។ free() ប្រើសម្រាប់ដោះលែងអង្គចិត្តដែលបានបែងចែក។</p>
+        <pre class="bg-gray-800 text-white p-4 rounded-lg mt-2 overflow-x-auto">
+<code>
+#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+
+int main() {
+    int *arr;
+    arr = (int*) malloc(5 * sizeof(int));  // Allocate memory for 5 integers
+    if (arr != NULL) {
+        for (int i = 0; i < 5; i++) {
+            arr[i] = i * 10;
+        }
+
+        for (int i = 0; i < 5; i++) {
+            printf("%d ", arr[i]);  // Display elements
+        }
+
+        arr = (int*) realloc(arr, 10 * sizeof(int));  // Reallocate memory for 10 integers
+        for (int i = 5; i < 10; i++) {
+            arr[i] = i * 10;
+        }
+
+        printf("\n");
+        for (int i = 0; i < 10; i++) {
+            printf("%d ", arr[i]);  // Display updated elements
+        }
+
+        free(arr);  // Free allocated memory
+    }
+    return 0;
+}
+</code>
+        </pre>
+        <pre class="bg-gray-100 text-black p-4 rounded-lg mt-2">
+Output: 
+0 10 20 30 40 
+0 10 20 30 40 50 60 70 80 90
+</pre>
+    </div>
+
+    <!-- Memory Leaks and Memory Management -->
+    <div id="memory-leaks-memory-management" class="mt-8">
+        <h3 class="text-2xl font-semibold text-blue-600">11.3. ការហួសបាត់នៃសម្ភារៈ និងការគ្រប់គ្រងសម្ភារៈ</h3>
+        <p class="mt-2">Memory Leaks គឺជាបញ្ហានៃការបែងចែកសម្ភារៈហើយមិនមានការដោះលែងមើលថែរប្រាកដ។ វាអាចបណ្តាលឱ្យមានបញ្ហាកំណត់ក្នុងប្រព័ន្ធ។ ការគ្រប់គ្រងសម្ភារៈប្រកបដោយការប្រើប្រាស់ free() និងការបង់កំណត់លើការបែងចែកមានសារៈសំខាន់។</p>
+        <pre class="bg-gray-800 text-white p-4 rounded-lg mt-2 overflow-x-auto">
+<code>
+#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+
+int main() {
+    int *arr = (int*) malloc(5 * sizeof(int));  // Memory allocated but not freed
+    // Forgetting to call free() can cause a memory leak
+    // free(arr);  // Fix by freeing the allocated memory
+    return 0;
+}
+</code>
+        </pre>
+        <pre class="bg-gray-100 text-black p-4 rounded-lg mt-2">
+Output: 
+(No output, but this program has a memory leak due to not freeing the memory)
+</pre>
+    </div>
+
+    <!-- Using Pointers with Dynamic Memory -->
+    <div id="using-pointers-with-dynamic-memory" class="mt-8">
+        <h3 class="text-2xl font-semibold text-blue-600">11.4. ការប្រើប្រាស់បញ្ជូនជាមួយសម្ភារៈឥតកំណត់</h3>
+        <p class="mt-2">ការប្រើប្រាស់ pointers ជាមួយនឹង dynamic memory គឺមានសារៈសំខាន់ពេលដែលអ្នកកំណត់តម្លៃឥតកំណត់មួយសម្រាប់ទិន្នន័យ។ ការប្រើប្រាស់ pointer អាចធ្វើឲ្យការបែងចែក memory ទៅលើអង្គចិត្តនីមួយៗកាន់តែមានប្រសិទ្ធភាព។</p>
+        <pre class="bg-gray-800 text-white p-4 rounded-lg mt-2 overflow-x-auto">
+<code>
+#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+
+int main() {
+    int *ptr;
+    ptr = (int*) malloc(3 * sizeof(int));  // Allocate memory for 3 integers
+    if (ptr != NULL) {
+        for (int i = 0; i < 3; i++) {
+            ptr[i] = i * 5;  // Assign values dynamically
+        }
+
+        for (int i = 0; i < 3; i++) {
+            printf("%d ", ptr[i]);  // Display values
+        }
+
+        free(ptr);  // Free allocated memory
+    }
+    return 0;
+}
+</code>
+        </pre>
+        <pre class="bg-gray-100 text-black p-4 rounded-lg mt-2">
+Output: 
+0 5 10
+</pre>
+    </div>
+</div>
+
+
+
+<div id="preprocessor-directives" class="py-12 px-6 overflow-y-auto">
+    <h2 class="text-3xl font-semibold text-blue-600">12. Preprocessor Directives</h2>
+    <p class="mt-4 text-lg">នៅក្នុងផ្នែកនេះ យើងនឹងសិក្សាពីការប្រើប្រាស់បញ្ជាតម្រូវ (Preprocessor Directives) ក្នុងភាសា C។</p>
+
+    <!-- #define and Constants -->
+    <div id="define-and-constants" class="mt-8">
+        <h3 class="text-2xl font-semibold text-blue-600">12.1. #define and Constants</h3>
+        <p class="mt-2">Directives #define ត្រូវបានប្រើសម្រាប់ការបង្កើត constants និងកំណត់តម្លៃថេរដែលត្រូវបានប្រើក្នុងកម្មវិធី។</p>
+        <pre class="bg-gray-800 text-white p-4 rounded-lg mt-2 overflow-x-auto">
+<code>
+#include &lt;stdio.h&gt;
+
+#define PI 3.14  // Defining constant PI
+
+int main() {
+    float area = PI * 10 * 10;  // Using defined constant
+    printf("Area of circle: %.2f\n", area);
+    return 0;
+}
+</code>
+        </pre>
+        <pre class="bg-gray-100 text-black p-4 rounded-lg mt-2">
+Output: 
+Area of circle: 314.00
+</pre>
+    </div>
+
+    <!-- #include and Header Files -->
+    <div id="include-and-header-files" class="mt-8">
+        <h3 class="text-2xl font-semibold text-blue-600">12.2. #include and Header Files</h3>
+        <p class="mt-2">Directive #include ត្រូវបានប្រើដើម្បីបញ្ចូលឯកសារ header ដែលមានប្រភេទនៃអនុបត្ថម្ភដូចជា function declarations, constants, and types។</p>
+        <pre class="bg-gray-800 text-white p-4 rounded-lg mt-2 overflow-x-auto">
+<code>
+#include &lt;stdio.h&gt;  // Standard Input-Output header file
+
+int main() {
+    printf("Hello, World!\n");  // Using printf from stdio.h
+    return 0;
+}
+</code>
+        </pre>
+        <pre class="bg-gray-100 text-black p-4 rounded-lg mt-2">
+Output: 
+Hello, World!
+</pre>
+    </div>
+
+    <!-- Conditional Compilation -->
+    <div id="conditional-compilation" class="mt-8">
+        <h3 class="text-2xl font-semibold text-blue-600">12.3. Conditional Compilation</h3>
+        <p class="mt-2">Conditional Compilation គឺជាការប្រើប្រាស់បញ្ជាតម្រូវ #if, #else, #elif និង #endif ដើម្បីជ្រើសរើសកូដមួយសម្រាប់បរិស្ថានផ្សេងៗគ្នា។</p>
+        <pre class="bg-gray-800 text-white p-4 rounded-lg mt-2 overflow-x-auto">
+<code>
+#include &lt;stdio.h&gt;
+
+#define DEBUG 1  // Enable debug code
+
+int main() {
+    #if DEBUG
+        printf("Debugging is enabled.\n");
+    #else
+        printf("Debugging is disabled.\n");
+    #endif
+    return 0;
+}
+</code>
+        </pre>
+        <pre class="bg-gray-100 text-black p-4 rounded-lg mt-2">
+Output: 
+Debugging is enabled.
+</pre>
+    </div>
+
+    <!-- Macros and Inline Functions -->
+    <div id="macros-and-inline-functions" class="mt-8">
+        <h3 class="text-2xl font-semibold text-blue-600">12.4. Macros and Inline Functions</h3>
+        <p class="mt-2">Macros ត្រូវបានប្រើសម្រាប់បង្កើតកូដផ្ទៃក្នុង (code snippets) ដែលត្រូវបានជំនួសដោយអត្ថបទមុននឹងកំណត់ដំណើរការ។ Inline functions គឺជាមុខងារដែលត្រូវបានកំណត់ក្នុងផ្ទាំងមួយនៃការជួបប្រទះដោយមិនបង្កើតការហៅមុខងារ។</p>
+        <pre class="bg-gray-800 text-white p-4 rounded-lg mt-2 overflow-x-auto">
+<code>
+#include &lt;stdio.h&gt;
+
+#define SQUARE(x) ((x) * (x))  // Macro for square of a number
+
+inline int square(int x) {
+    return x * x;  // Inline function for square of a number
+}
+
+int main() {
+    printf("Square using macro: %d\n", SQUARE(4));
+    printf("Square using inline function: %d\n", square(4));
+    return 0;
+}
+</code>
+        </pre>
+        <pre class="bg-gray-100 text-black p-4 rounded-lg mt-2">
+Output: 
+Square using macro: 16
+Square using inline function: 16
+</pre>
+    </div>
+
+    <!-- File Inclusion and Guard Directives -->
+    <div id="file-inclusion-and-guard-directives" class="mt-8">
+        <h3 class="text-2xl font-semibold text-blue-600">12.5. File Inclusion and Guard Directives</h3>
+        <p class="mt-2">Guard directives (e.g., #ifndef, #define, #endif) ត្រូវបានប្រើដើម្បីកុះគ្នាការបញ្ចូលឯកសារតែម្ដងក្នុងកម្មវិធីជាមួយនឹងការជៀសវាងភាពបញ្ចូលអំពីរបៀបមួយ។</p>
+        <pre class="bg-gray-800 text-white p-4 rounded-lg mt-2 overflow-x-auto">
+<code>
+// Example of header guard
+#ifndef HEADER_FILE_H
+#define HEADER_FILE_H
+
+void exampleFunction();
+
+#endif  // HEADER_FILE_H
+</code>
+        </pre>
+        <pre class="bg-gray-100 text-black p-4 rounded-lg mt-2">
+Explanation: 
+This code ensures that the header file is only included once in a project.
+</pre>
+    </div>
+</div>
+
+
+
+
+<div id="error-handling-and-debugging" class="py-12 px-6 overflow-y-auto">
+    <h2 class="text-3xl font-semibold text-blue-600">13. ការដោះសោ និង ការកែចំ</h2>
+    <p class="mt-4 text-lg">ក្នុងផ្នែកនេះយើងនឹងពិភាក្សាពីបច្ចេកទេសនៃការដោះសោ និង ការកែចំក្នុងការគ្រប់គ្រងកំហុស និងការត្រួតពិនិត្យបញ្ហាក្នុងការសរសេរកូដ C។ ការប្រើប្រាស់ឧបករណ៍ និងបច្ចេកទេសទាំងនេះជួយអ្នកដើម្បីកំណត់ និងដោះសោបញ្ហាដោយឆាប់រហ័សនៅពេលដែលអ្នកកំពុងអភិវឌ្ឍកម្មវិធី។</p>
+
+    <!-- Error Handling in C -->
+    <div id="error-handling-in-c" class="mt-8">
+        <h3 class="text-2xl font-semibold text-blue-600">13.1. ការដោះសោក្នុង C</h3>
+        <p class="mt-2">ក្នុង C ការដោះសោធម្មតាត្រូវបានធ្វើតាមការប្រើតម្លៃត្រឡប់ `errno` និងមុខងារដោះសោដូចជា `perror()` និង `strerror()`។ ឧបករណ៍ទាំងនេះអនុញ្ញាតឱ្យអ្នករកឃើញ និងរាយការណ៍ពីកំហុសនៅពេលដែលកម្មវិធីកំពុងដំណើរការ។</p>
+        <pre class="bg-gray-800 text-white p-4 rounded-lg mt-2 overflow-x-auto">
+<code>
+#include &lt;stdio.h&gt;
+#include &lt;errno.h&gt;
+
+int main() {
+    FILE *file = fopen("non_existent_file.txt", "r");
+    if (file == NULL) {
+        perror("កំហុសក្នុងការបើកឯកសារ");  // បង្ហាញសារកំហុស
+        return 1;
+    }
+    fclose(file);
+    return 0;
+}
+</code>
+        </pre>
+        <pre class="bg-gray-100 text-black p-4 rounded-lg mt-2">
+Output: 
+កំហុសក្នុងការបើកឯកសារ: មិនមានឯកសារទេ
+</pre>
+    </div>
+
+    <!-- Using assert() for Debugging -->
+    <div id="using-assert-for-debugging" class="mt-8">
+        <h3 class="text-2xl font-semibold text-blue-600">13.2. ប្រើ assert() សម្រាប់ការកែចំ</h3>
+        <p class="mt-2">មុខងារ `assert()` ជាឧបករណ៍សម្រាប់ត្រួតពិនិត្យលក្ខខណ្ឌមួយ។ ប្រសិនបើលក្ខខណ្ឌមិនត្រឹមត្រូវ ប្រព័ន្ធនឹងបញ្ចប់ការប្រតិបត្ដិ ដោយផ្តល់ព័ត៌មានអំពីទីតាំងកំហុសដែលបានកើតឡើង។</p>
+        <pre class="bg-gray-800 text-white p-4 rounded-lg mt-2 overflow-x-auto">
+<code>
+#include &lt;stdio.h&gt;
+#include &lt;assert.h&gt;
+
+int main() {
+    int x = 5;
+    assert(x > 0);  // នេះនឹងជោគជ័យ
+    assert(x < 0);  // នេះនឹងបរាជ័យ
+    return 0;
+}
+</code>
+        </pre>
+        <pre class="bg-gray-100 text-black p-4 rounded-lg mt-2">
+Output: 
+ការបញ្ចេញអនុញ្ញាតបានបរាជ័យ: x < 0, ឯកសារអ្នកឧទាហរណ៍.c, បន្ទាត់ 6, មុខងារ main.
+</pre>
+    </div>
+
+    <!-- Handling Runtime Errors -->
+    <div id="handling-runtime-errors" class="mt-8">
+        <h3 class="text-2xl font-semibold text-blue-600">13.3. ការដោះសោកំហុសនៅពេលប្រតិបត្ដិ</h3>
+        <p class="mt-2">កំហុស Runtime ក្នុងកម្មវិធី C អាចដោះសោបានតាមបច្ចេកទេសដូចជា ការត្រួតពិនិត្យ pointer មិនមានតម្លៃ, ការបញ្ជាក់វាលបញ្ចូល និងការប្រើប្រាស់លេខកូដកំហុសដែលត្រឹមត្រូវសម្រាប់មុខងារផ្សេងៗ។</p>
+        <pre class="bg-gray-800 text-white p-4 rounded-lg mt-2 overflow-x-auto">
+<code>
+#include &lt;stdio.h&gt;
+
+int main() {
+    int *ptr = NULL;
+    if (ptr == NULL) {
+        printf("Pointer មិនមានតម្លៃ, មិនអាចបញ្ជូលបាន\n");
+    }
+    return 0;
+}
+</code>
+        </pre>
+        <pre class="bg-gray-100 text-black p-4 rounded-lg mt-2">
+Output: 
+Pointer មិនមានតម្លៃ, មិនអាចបញ្ជូលបាន
+</pre>
+    </div>
+
+    <!-- Debugging with GDB -->
+    <div id="debugging-with-gdb" class="mt-8">
+        <h3 class="text-2xl font-semibold text-blue-600">13.4. ការកែចំជាមួយ GDB</h3>
+        <p class="mt-2">GDB (GNU Debugger) គឺជាឧបករណ៍ដ៏មានអំណាចសម្រាប់ការកែចំកម្មវិធី C។ វាអនុញ្ញាតឱ្យអ្នកអនុវត្តកម្មវិធីរបស់អ្នកជាការប្រតិបត្ដិทีៗ កំណត់ breakpoints ពិនិត្យតម្លៃអថេរ និងតាមដានកំហុស។</p>
+        <pre class="bg-gray-800 text-white p-4 rounded-lg mt-2 overflow-x-auto">
+<code>
+$ gcc -g example.c -o example   // បង្កើតការបញ្ចូលជាមួយសញ្ញារូបសំណេីបបញ្ហា
+$ gdb ./example                // ចាប់ផ្តើម GDB
+(gdb) break main                // កំណត់ breakpoint នៅក្នុងមុខងារ main
+(gdb) run                       // ប្រតិបត្ដិកម្មវិធី
+(gdb) print x                   // ពិនិត្យតម្លៃនៃ x
+</code>
+        </pre>
+        <pre class="bg-gray-100 text-black p-4 rounded-lg mt-2">
+Explanation: 
+GDB អនុញ្ញាតឱ្យអ្នកធ្វើការកែចំកម្មវិធីបានយ៉ាង interactive និងពិនិត្យប្រភេទរបស់វា។
+</pre>
+    </div>
+
+    <!-- Exception Handling Techniques -->
+    <div id="exception-handling-techniques" class="mt-8">
+        <h3 class="text-2xl font-semibold text-blue-600">13.5. បច្ចេកទេសការដោះសោបញ្ហាអាក្រក់</h3>
+        <p class="mt-2">បញ្ហាអាក្រក់នៅក្នុង C មិនមានការគាំទ្រដោយតែមួយសម្រាប់ការដោះសោបញ្ហាបានទេ។ ទោះជាយ៉ាងណាក៏ដោយ អ្នកអាចប្រើប្រាស់បច្ចេកទេសដូចជា `setjmp()` និង `longjmp()` ដើម្បីធ្វើការទំនាក់ទំនងដូចជា exception handling នៅក្នុង C ។</p>
+        <pre class="bg-gray-800 text-white p-4 rounded-lg mt-2 overflow-x-auto">
+<code>
+#include &lt;stdio.h&gt;
+#include &lt;setjmp.h&gt;
+
+jmp_buf env;
+
+void testFunction() {
+    longjmp(env, 1);  // ការត្រឡប់មកវិញទៅកាន់ setjmp
+}
+
+int main() {
+    if (setjmp(env) != 0) {
+        printf("មានកំហុសកើតឡើង!\n");
+    } else {
+        testFunction();  // នេះនឹងបង្ហាញ longjmp
+    }
+    return 0;
+}
+</code>
+        </pre>
+        <pre class="bg-gray-100 text-black p-4 rounded-lg mt-2">
+Output: 
+មានកំហុសកើតឡើង!
+</pre>
+    </div>
+</div>
+
+
+
+<div id="advanced-c-concepts" class="py-12 px-6 overflow-y-auto">
+    <h2 class="text-3xl font-semibold text-blue-600">14. គំនិតខុសៗទៅក្នុង C</h2>
+    <p class="mt-4 text-lg">ក្នុងផ្នែកនេះ យើងនឹងពិភាក្សាអំពីប្រធានបទខុសៗទៀតក្នុងការកម្មវិធី C ដែលសំខាន់សម្រាប់ការបង្កើតកម្មវិធីដែលមានភាពស្មុគស្មាញ និងមានប្រសិទ្ធភាព។ គំនិតទាំងនេះនឹងពង្រឹងការយល់ដឹងមូលដ្ឋានរបស់អ្នក និងជួយដោះសោបញ្ហាស្មុគស្មាញ និងធ្វើឲ្យប្រសើរឡើងនូវក្រុមការងាររបស់អ្នក។</p>
+
+    <!-- Multithreading in C -->
+    <div id="multithreading-in-c" class="mt-8">
+        <h3 class="text-2xl font-semibold text-blue-600">14.1. Multithreading ក្នុង C</h3>
+        <p class="mt-2">Multithreading អនុញ្ញាតឱ្យមានការអនុវត្តន៍threads ច្រើន (គ្រឿងប្រតិបត្តិតូចៗនៃដំណើរការមួយ) ក្នុងពេលតែមួយ ដែលធ្វើអោយកម្មវិធីមានប្រសិទ្ធភាពកាន់តែខ្ពស់ក្នុងករណីដែលត្រូវការអនុវត្តន៍ពេលតែមួយ ដូចជា កម្មវិធីម៉ាស៊ីនមេ ឬកម្មវិធីដែលត្រូវការអនុវត្តន៍ជាច្រើន។</p>
+        <pre class="bg-gray-800 text-white p-4 rounded-lg mt-2 overflow-x-auto">
+<code>
+#include &lt;stdio.h&gt;
+#include &lt;pthread.h&gt;
+
+void* printMessage(void* ptr) {
+    printf("សួស្តីពីthread!\n");
+    return NULL;
+}
+
+int main() {
+    pthread_t thread1;
+    pthread_create(&thread1, NULL, printMessage, NULL);
+    pthread_join(thread1, NULL);
+    return 0;
+}
+</code>
+        </pre>
+        <pre class="bg-gray-100 text-black p-4 rounded-lg mt-2">
+Output: 
+សួស្តីពីthread!
+</pre>
+    </div>
+
+    <!-- Sockets and Networking in C -->
+    <div id="sockets-and-networking-in-c" class="mt-8">
+        <h3 class="text-2xl font-semibold text-blue-600">14.2. សោនិងបណ្តាញក្នុង C</h3>
+        <p class="mt-2">Sockets ផ្តល់នូវវិធីសាស្ត្រដើម្បីកម្មវិធីធ្វើការទំនាក់ទំនងតាមបណ្តាញ។ ក្នុង C ប្រើបណ្ណាល័យ `<sys/socket.h>` ដើម្បីបង្កើតសោនិងធ្វើការទំនាក់ទំនងទាំងពីរសម្រាប់គ្រឿងម៉ាស៊ីនមេនិងអតិថិជន។ វាជាមុខងារសំខាន់សម្រាប់បង្កើតកម្មវិធីដែលត្រូវការបញ្ចូនទិន្នន័យ ដូចជា ប្រព័ន្ធប្រតិបត្តិការទំព័របណ្ដាញ ឬហ្គេមអនឡាញ។</p>
+        <pre class="bg-gray-800 text-white p-4 rounded-lg mt-2 overflow-x-auto">
+<code>
+#include &lt;stdio.h&gt;
+#include &lt;sys/socket.h&gt;
+#include &lt;arpa/inet.h&gt;
+
+int main() {
+    int sockfd = socket(AF_INET, SOCK_STREAM, 0);
+    struct sockaddr_in server;
+    server.sin_family = AF_INET;
+    server.sin_port = htons(8080);
+    server.sin_addr.s_addr = inet_addr("127.0.0.1");
+
+    connect(sockfd, (struct sockaddr *)&server, sizeof(server));
+    // បញ្ជូន និងទទួលទិន្នន័យ
+
+    return 0;
+}
+</code>
+        </pre>
+        <pre class="bg-gray-100 text-black p-4 rounded-lg mt-2">
+Explanation: 
+នេះបង្កើតគ klient TCP មួយដែលភ្ជាប់ទៅម៉ាស៊ីនមេនៅលើ localhost នៅពេល 8080។
+</pre>
+    </div>
+
+    <!-- C and Object-Oriented Programming -->
+    <div id="c-and-object-oriented-programming" class="mt-8">
+        <h3 class="text-2xl font-semibold text-blue-600">14.3. C និងការកម្មវិធីមូលដ្ឋានវត្ថុ-oriented</h3>
+        <p class="mt-2">C មិនមែនជាភាសាកម្មវិធីមូលដ្ឋានវត្ថុទេ ប៉ុន្តែគម្រោងវត្ថុ-oriented ដូចជា encapsulation, inheritance និង polymorphism អាចត្រូវបានអនុវត្តន៍តាមរយៈស៊ិចថួរ (structures), function pointers និងបច្ចេកទេសផ្សេងៗ។ នេះអនុញ្ញាតឱ្យអ្នកសម្រួលទិន្នន័យក្នុងរបៀបដូចកម្មវិធីមូលដ្ឋានវត្ថុ។</p>
+        <pre class="bg-gray-800 text-white p-4 rounded-lg mt-2 overflow-x-auto">
+<code>
+#include &lt;stdio.h&gt;
+
+struct Car {
+    char model[50];
+    int year;
+    void (*displayInfo)(struct Car*);  // Function pointer
+};
+
+void displayCarInfo(struct Car* car) {
+    printf("ម៉ូដែល: %s\nឆ្នាំ: %d\n", car->model, car->year);
+}
+
+int main() {
+    struct Car myCar = {"Toyota", 2020, displayCarInfo};
+    myCar.displayInfo(&myCar);  // ការហៅវិធី
+    return 0;
+}
+</code>
+        </pre>
+        <pre class="bg-gray-100 text-black p-4 rounded-lg mt-2">
+Output: 
+ម៉ូដែល: Toyota
+ឆ្នាំ: 2020
+</pre>
+    </div>
+
+    <!-- Advanced Data Structures (e.g., Trees, Graphs) -->
+    <div id="advanced-data-structures" class="mt-8">
+        <h3 class="text-2xl font-semibold text-blue-600">14.4. រចនាសម្ព័ន្ធទិន្នន័យខ្ពស់ (ដូចជា ដើមឈើ, សៀវភៅ)</h3>
+        <p class="mt-2">រចនាសម្ព័ន្ធទិន្នន័យខ្ពស់ដូចជា ដើមឈើ និង សៀវភៅមានសារៈសំខាន់សម្រាប់ការកំណត់ទិន្នន័យស្មុគស្មាញក្នុង C។ រចនាសម្ព័ន្ធទាំងនេះអនុញ្ញាតឱ្យមានការកែប្រែទិន្នន័យយ៉ាងមានប្រសិទ្ធភាព និងដោះសោបញ្ហាក្នុងកម្មវិធីដូចជា ឌីតាបេស, កម្មវិធីបកប្រែ និង អាល់ហ្គូរិធម៍ AI។</p>
+        <pre class="bg-gray-800 text-white p-4 rounded-lg mt-2 overflow-x-auto">
+<code>
+#include &lt;stdio.h&gt;
+
+struct Node {
+    int data;
+    struct Node* left;
+    struct Node* right;
+};
+
+void inOrderTraversal(struct Node* root) {
+    if (root != NULL) {
+        inOrderTraversal(root->left);
+        printf("%d ", root->data);
+        inOrderTraversal(root->right);
+    }
+}
+
+int main() {
+    struct Node root = {10, NULL, NULL};
+    struct Node leftChild = {5, NULL, NULL};
+    struct Node rightChild = {15, NULL, NULL};
+
+    root.left = &leftChild;
+    root.right = &rightChild;
+
+    inOrderTraversal(&root);  // Output: 5 10 15
+    return 0;
+}
+</code>
+        </pre>
+        <pre class="bg-gray-100 text-black p-4 rounded-lg mt-2">
+Output: 
+5 10 15
+</pre>
+    </div>
+
+    <!-- Compiler Optimization Techniques -->
+    <div id="compiler-optimization-techniques" class="mt-8">
+        <h3 class="text-2xl font-semibold text-blue-600">14.5. បច្ចេកទេសប្រសិទ្ធភាពក្រុមបកប្រែ</h3>
+        <p class="mt-2">បច្ចេកទេសប្រសិទ្ធភាពក្រុមបកប្រែមកនឹងត្រូវបានប្រើដើម្បីធ្វើឲ្យកម្មវិធី C មានប្រសិទ្ធភាពខ្ពស់។ បច្ចេកទេសទាំងនេះអាចបង្កើតឲ្យមានការកំណត់ទាំងការចំណាយពេលវេលា ការប្រើប្រាស់លុបចោលកូដដែលមិនចាំបាច់ ការកំណត់អនុភាពនៅក្នុងរយៈពេល និងកំណត់ការប្រើប្រាស់មេម៉ូរី។</p>
+        <pre class="bg-gray-800 text-white p-4 rounded-lg mt-2 overflow-x-auto">
+<code>
+$ gcc -O2 program.c -o program  // បកប្រែជាមួយកម្រិតប្រសិទ្ធភាព 2
+</code>
+        </pre>
+        <pre class="bg-gray-100 text-black p-4 rounded-lg mt-2">
+Explanation: 
+ផ្ទាំង `-O2` អនុញ្ញាតឱ្យមានការបង្កើតប្រសិទ្ធភាពដែលធ្វើឲ្យប្រសើរឡើងដោយគ្មានការកំណត់ពេលវេលាការបកប្រែជាខ្លាំង។
+</pre>
+    </div>
+</div>
+
+
+
+<div id="c-standard-library" class="py-12 px-6 overflow-y-auto">
+    <h2 class="text-3xl font-semibold text-blue-600">15. បណ្ណាល័យស្តង់ដារ C</h2>
+    <p class="mt-4 text-lg">ក្នុងផ្នែកនេះ យើងនឹងពិភាក្សាអំពីបណ្ណាល័យស្តង់ដារបស់ភាសា C ដែលផ្តល់អំពីមុខងារនិងសមត្ថភាពដែលអាចជួយសម្រួលការអភិវឌ្ឍកម្មវិធីរបស់អ្នក។ វាជារបៀបដ៏សំខាន់ក្នុងការបង្កើតកម្មវិធីដែលមានប្រសិទ្ធភាព និងគាំទ្រដល់ការអភិវឌ្ឍកម្មវិធីនៅក្នុងបរិស្ថាន C។</p>
+
+    <!-- Standard Input/Output -->
+    <div id="standard-input-output" class="mt-8">
+        <h3 class="text-2xl font-semibold text-blue-600">15.1. ការបញ្ចូល/ចេញស្តង់ដារ</h3>
+        <p class="mt-2">បណ្ណាល័យ C ផ្តល់នូវមុខងារសំខាន់ៗសម្រាប់ការបញ្ចូល និងចេញទិន្នន័យ៖ `printf()` សម្រាប់បង្ហាញការចេញ និង `scanf()` សម្រាប់ទទួលការបញ្ចូលពីអ្នកប្រើ។</p>
+        <pre class="bg-gray-800 text-white p-4 rounded-lg mt-2 overflow-x-auto">
+<code>
+#include &lt;stdio.h&gt;
+
+int main() {
+    int number;
+    printf("បញ្ចូលលេខ: ");
+    scanf("%d", &number);
+    printf("លេខដែលបានបញ្ចូលគឺ: %d\n", number);
+    return 0;
+}
+</code>
+        </pre>
+        <pre class="bg-gray-100 text-black p-4 rounded-lg mt-2">
+Output: 
+បញ្ចូលលេខ: 5
+លេខដែលបានបញ្ចូលគឺ: 5
+</pre>
+    </div>
+
+    <!-- String Handling Functions -->
+    <div id="string-handling-functions" class="mt-8">
+        <h3 class="text-2xl font-semibold text-blue-600">15.2. មុខងារការគ្រប់គ្រងស្ថិតិ</h3>
+        <p class="mt-2">បណ្ណាល័យ C មានមុខងារច្រើនសម្រាប់ការគ្រប់គ្រងស្ថិតិដូចជា `strlen()`, `strcpy()`, `strcat()`, និង `strcmp()`។ មុខងារទាំងនេះអាចធ្វើអោយអ្នកគ្រប់គ្រងអត្ថបទបានល្អប្រសើរឡើង។</p>
+        <pre class="bg-gray-800 text-white p-4 rounded-lg mt-2 overflow-x-auto">
+<code>
+#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+
+int main() {
+    char str1[] = "សួស្តី";
+    char str2[20];
+    
+    strcpy(str2, str1);
+    printf("str2: %s\n", str2);
+    printf("ប្រវែងរបស់ str1: %zu\n", strlen(str1));
+    
+    return 0;
+}
+</code>
+        </pre>
+        <pre class="bg-gray-100 text-black p-4 rounded-lg mt-2">
+Output: 
+str2: សួស្តី
+ប្រវែងរបស់ str1: 6
+</pre>
+    </div>
+
+    <!-- Mathematical Functions -->
+    <div id="mathematical-functions" class="mt-8">
+        <h3 class="text-2xl font-semibold text-blue-600">15.3. មុខងារធ្វើគណនាឧត្តម</h3>
+        <p class="mt-2">បណ្ណាល័យ C ផ្តល់នូវមុខងារដើម្បីអនុវត្តន៍ការគណនាឧត្តមដូចជា `sqrt()` សម្រាប់ការគណនាផលដំណាក់ជាកំណត់ និង `pow()` សម្រាប់ការលើកកម្ពស់។</p>
+        <pre class="bg-gray-800 text-white p-4 rounded-lg mt-2 overflow-x-auto">
+<code>
+#include &lt;stdio.h&gt;
+#include &lt;math.h&gt;
+
+int main() {
+    double number = 16.0;
+    printf("ការគណនាផលដំណាក់របស់ %f គឺ: %f\n", number, sqrt(number));
+    printf("16 លើកកម្ពស់ 2 គឺ: %f\n", pow(16, 2));
+    return 0;
+}
+</code>
+        </pre>
+        <pre class="bg-gray-100 text-black p-4 rounded-lg mt-2">
+Output: 
+ការគណនាផលដំណាក់របស់ 16.000000 គឺ: 4.000000
+16 លើកកម្ពស់ 2 គឺ: 256.000000
+</pre>
+    </div>
+
+    <!-- Memory Management Functions -->
+    <div id="memory-management-functions" class="mt-8">
+        <h3 class="text-2xl font-semibold text-blue-600">15.4. មុខងារគ្រប់គ្រងមេម៉ូរី</h3>
+        <p class="mt-2">ការគ្រប់គ្រងមេម៉ូរីក្នុង C គឺមានសារៈសំខាន់សម្រាប់ការផ្ដល់ដល់កម្មវិធីការចំណាយមេម៉ូរីដែលមានប្រសិទ្ធភាព។ `malloc()`, `free()`, និង `realloc()` ជាមុខងារសំខាន់សម្រាប់ការប្រមូលទិន្នន័យនៅលើមេម៉ូរី។</p>
+        <pre class="bg-gray-800 text-white p-4 rounded-lg mt-2 overflow-x-auto">
+<code>
+#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+
+int main() {
+    int* ptr = (int*)malloc(sizeof(int));
+    if (ptr == NULL) {
+        printf("មេម៉ូរីមិនគ្រប់គ្រាន់\n");
+        return 1;
+    }
+    *ptr = 42;
+    printf("តម្លៃក្នុង ptr: %d\n", *ptr);
+    free(ptr);  // បញ្ចប់ការប្រើប្រាស់មេម៉ូរី
+    return 0;
+}
+</code>
+        </pre>
+        <pre class="bg-gray-100 text-black p-4 rounded-lg mt-2">
+Output: 
+តម្លៃក្នុង ptr: 42
+</pre>
+    </div>
+
+    <!-- Date and Time Functions -->
+    <div id="date-and-time-functions" class="mt-8">
+        <h3 class="text-2xl font-semibold text-blue-600">15.5. មុខងារពេលវេលានិងថ្ងៃ</h3>
+        <p class="mt-2">C ផ្តល់នូវមុខងារច្រើនសម្រាប់ការកំណត់ និងទទួលថ្ងៃ និងពេលវេលាដូចជា `time()`, `localtime()`, និង `strftime()`។ មុខងារទាំងនេះអាចធ្វើអោយអ្នកគ្រប់គ្រងថ្ងៃ និងពេលវេលានៅក្នុងកម្មវិធីបានល្អប្រសើរ។</p>
+        <pre class="bg-gray-800 text-white p-4 rounded-lg mt-2 overflow-x-auto">
+<code>
+#include &lt;stdio.h&gt;
+#include &lt;time.h&gt;
+
+int main() {
+    time_t t;
+    time(&t);
+    struct tm *tm_info = localtime(&t);
+    printf("ថ្ងៃបច្ចុប្បន្ន: %s\n", asctime(tm_info));
+    return 0;
+}
+</code>
+        </pre>
+        <pre class="bg-gray-100 text-black p-4 rounded-lg mt-2">
+Output: 
+ថ្ងៃបច្ចុប្បន្ន: Mon Jan 15 10:56:31 2025
+</pre>
+    </div>
+
+    <!-- Character Handling Functions -->
+    <div id="character-handling-functions" class="mt-8">
+        <h3 class="text-2xl font-semibold text-blue-600">15.6. មុខងារគ្រប់គ្រងតួអក្សរ</h3>
+        <p class="mt-2">C ផ្តល់នូវមុខងារគ្រប់គ្រងតួអក្សរដូចជា `isalpha()`, `isdigit()`, និង `tolower()` ដែលអាចត្រូវបានប្រើសម្រាប់ការត្រួតពិនិត្យ និងផ្លាស់ប្ដូរតួអក្សរ។</p>
+        <pre class="bg-gray-800 text-white p-4 rounded-lg mt-2 overflow-x-auto">
+<code>
+#include &lt;stdio.h&gt;
+#include &lt;ctype.h&gt;
+
+int main() {
+    char ch = 'A';
+    if (isalpha(ch)) {
+        printf("%c គឺជាតួអក្សរ\n", ch);
+    }
+    printf("%c នៅក្នុងតួអក្សរតូចគឺ: %c\n", ch, tolower(ch));
+    return 0;
+}
+</code>
+        </pre>
+        <pre class="bg-gray-100 text-black p-4 rounded-lg mt-2">
+Output: 
+A គឺជាតួអក្សរ
+A នៅក្នុងតួអក្សរតូចគឺ: a
+</pre>
+    </div>
+</div>
+
+
+
+
+
+
+</div>
+
+
+
+
+
+        </div>
+    </div>
+    
+    
+
+    <script>
+        // Select the elements
+        const sidebar = document.getElementById('sidebar');
+        const sidebarToggle = document.querySelector('[@click="open = !open"]');
+        const closeSidebar = document.getElementById('closeSidebar');
+
+        // Toggle sidebar visibility when the toggle button is clicked
+        sidebarToggle.addEventListener('click', function() {
+            sidebar.classList.toggle('hidden');
+        });
+
+        // Close sidebar when the close button (×) is clicked
+        closeSidebar.addEventListener('click', function() {
+            sidebar.classList.add('hidden');
+        });
+    </script>
+
+
+
+<section class="bg-gray-900 text-white py-12">
+    <div class="container mx-auto px-6 text-center md:text-left">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <!-- About Section -->
+            <div>
+                <h3 class="text-2xl font-semibold mb-4">អំពីយើង</h3>
+                <p class="text-gray-400 mb-4">CodeKhmerLearning ផ្តល់ឱ្យអ្នកនូវវគ្គសិក្សាពិសេសក្នុងការរៀនកូដភាសាខ្មែរ។ យើងមានក្រុមការងារព្រមមានជំនាញក្នុងការអភិវឌ្ឍកម្មវិធី និងវេបសាយ។</p>
+                <p class="text-gray-400">© 2025 CodeKhmerLearning. All Rights Reserved.</p>
+            </div>
+
+            <!-- Quick Links Section -->
+            <div>
+                <h3 class="text-2xl font-semibold mb-4">តំណភ្ជាប់រហ័ស</h3>
+                <ul>
+                    <li><a href="#home" class="text-gray-400 hover:text-white mb-2">ផ្ទាំងដើម</a></li>
+                    <li><a href="#courses" class="text-gray-400 hover:text-white mb-2">វគ្គសិក្សា</a></li>
+                    <li><a href="#about" class="text-gray-400 hover:text-white mb-2">អំពីយើង</a></li>
+                    <li><a href="#contact" class="text-gray-400 hover:text-white mb-2">ទំនាក់ទំនង</a></li>
+                </ul>
+            </div>
+
+            <!-- Contact & Social Section -->
+            <div>
+                <h3 class="text-2xl font-semibold mb-4">ទំនាក់ទំនង</h3>
+                <p class="text-gray-400 mb-4">សូមទំនាក់ទំនងមកកាន់យើងក្តី:</p>
+                <p class="text-gray-400 mb-4">Email: info@codekhmer.com</p>
+                <p class="text-gray-400 mb-6">Phone: +855 123 456 789</p>
+
+                <!-- Social Media Icons -->
+                <div class="flex justify-center space-x-6">
+                    <a href="https://www.facebook.com" target="_blank" class="text-blue-600 hover:text-blue-800">
+                        <i class="fab fa-facebook-f text-2xl"></i>
+                    </a>
+                    <a href="https://t.me" target="_blank" class="text-blue-500 hover:text-blue-700">
+                        <i class="fab fa-telegram-plane text-2xl"></i>
+                    </a>
+                    <a href="https://www.tiktok.com" target="_blank" class="text-black hover:">
+                        <i class="fab fa-tiktok text-2xl"></i>
+                    </a>
+                    <a href="https://www.youtube.com" target="_blank" class="text-red-600 hover:text-red-800">
+                        <i class="fab fa-youtube text-2xl"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="text-center mt-8">
+            <p class="text-gray-400 text-sm">&copy; 2025 CodeKhmerLearning. All rights reserved.</p>
+        </div>
+    </div>
+</section>
+
+
+    
+
+    <script src="fetchdata_card.js"></script>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Nokora&display=swap" rel="stylesheet">
+    
+
+    
+    <script src="typingMainText.js"></script>
+    <script>
+        const menuButton = document.getElementById('menuButton');
+        const mobileMenu = document.getElementById('mobileMenu');
+
+        menuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        const courseButton = document.getElementById('courseButton');
+        const courseDropdown = document.getElementById('courseDropdown');
+
+        courseButton.addEventListener('click', () => {
+            courseDropdown.classList.toggle('hidden');
+        });
+
+        const mobileCourseButton = document.getElementById('mobileCourseButton');
+        const mobileCourseDropdown = document.getElementById('mobileCourseDropdown');
+
+        mobileCourseButton.addEventListener('click', () => {
+            mobileCourseDropdown.classList.toggle('hidden');
+        });
+    </script>
+    <script>
+        AOS.init({
+            duration: 1000, // Animation duration
+            easing: 'ease-in-out', // Animation easing
+            once: true, // Trigger animation only once when scrolled into view
+        });
+    </script>
+    
+    
+    <script src="../script.js"></script>
+    <script src="../darkandlight.js"></script>
+</body>
+</html>

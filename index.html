@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CodeKhmerLearning</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Khmer+UI&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="darkandlight.css">
+    <!-- AOS CSS -->
+<link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+<!-- Font Awesome CDN (Updated version) -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+
+<!-- AOS JavaScript -->
+<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+
+    <style>
+        body {
+            font-family: 'Nokora', sans-serif;
+        }  
+            
+    </style>
+</head>
+<body class="bg-black">
+    <nav class="bg-gray-900 text-white sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-3 flex items-center justify-between">
+            <!-- Logo -->
+            <div class="text-xl font-bold">
+                <a href="index.html">CodeKhmerLearning</a>
+            </div>
+    
+            <!-- Navigation Links -->
+            <div class="hidden md:flex space-x-6">
+                <a href="index.html" class="hover:text-blue-400">ទំព័រដើម</a>
+                <div class="relative">
+                    <button id="courseButton" class="flex items-center hover:text-blue-400 focus:outline-none">
+                        វគ្គសិក្សា
+                        <svg class="w-5 h-5 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                        </svg>
+                    </button>
+                    <div id="courseDropdown" class="hidden absolute bg-gray-900 text-white mt-2 py-2 w-48 shadow-lg">
+                        <a href="#c" class="flex items-center px-4 py-2 hover:bg-blue-600">
+                            C
+                        </a>
+                        <a href="#c++" class="flex items-center px-4 py-2 hover:bg-blue-600">
+                            C++
+                        </a>
+                        <a href="#html" class="flex items-center px-4 py-2 hover:bg-blue-600">
+                            HTML
+                        </a>
+                    </div>
+                </div>
+                <a href="about.html" class="hover:text-blue-400">អំពីយើង</a>
+                <a href="#contact" class="hover:text-blue-400">ទំនាក់ទំនង</a>
+                
+            </div>
+<!-- Toggle Theme Button with Icon -->
+<button id="themeToggle" class="text-white px-4 py-2 rounded-md bg-blue-600 hover:bg-blue-500 flex items-center space-x-2">
+    <span id="themeIcon" class="w-5 h-5">
+        
+    </span>
+   
+</button>
+
+
+
+    
+            <!-- Mobile Menu Button -->
+            <div class="md:hidden">
+                <button id="menuButton" class="focus:outline-none">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    
+        <!-- Mobile Menu -->
+        <div id="mobileMenu" class="hidden md:hidden bg-gray-900">
+            <a href="index.html" class="block px-4 py-2 hover:bg-blue-600">ទំព័រដើម</a>
+            <div class="relative">
+                <button id="mobileCourseButton" class="flex items-center w-full text-left px-4 py-2 hover:bg-blue-600">
+                    វគ្គសិក្សា
+                    <svg class="w-5 h-5 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                    </svg>
+                </button>
+                <div id="mobileCourseDropdown" class="hidden bg-gray-900">
+                    <a href="#c" class="flex items-center px-4 py-2 hover:bg-blue-500">
+                        C
+                    </a>
+                    <a href="#c++" class="flex items-center px-4 py-2 hover:bg-blue-500">
+                        C++
+                    </a>
+                    <a href="#html" class="flex items-center px-4 py-2 hover:bg-blue-500">
+                        HTML
+                    </a>
+                </div>
+            </div>
+            <a href="about.html" class="block px-4 py-2 hover:bg-blue-600">អំពីយើង</a>
+            <a href="#contact" class="block px-4 py-2 hover:bg-blue-600">ទំនាក់ទំនង</a>
+        </div>
+    </nav>
+
+    <section class="relative bg-black text-white py-16 ">
+        <div class="container mx-auto text-center">
+            <div class="relative w-full mx-auto overflow-hidden">
+                <!-- Main Hero Content -->
+                <div class="flex flex-col items-center">
+                    <h1 id="typewriter" class="text-5xl font-extrabold leading-tight mb-4"></h1>
+                    <br>
+                    <p class="text-xl mb-8">
+                        សូមស្វាគមន៍មកកាន់គេហ័រទំព័ររៀនកូដជាភាសាខ្មែរ
+                    </p>
+                    
+                    
+                </div>
+                
+                
+            </div>
+           
+            <button class="button-85" role="button">រុករកវគ្គសិក្សា</button>
+        </div>
+    </section>
+    
+
+    <section class="py-10">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center mb-8" style="font-family: 'Nokora', sans-serif;">វគ្គសិក្សារបស់យើង</h2>
+            <div id="courses" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Course cards will be injected here -->
+            </div>
+        </div>
+    </section>
+
+    <section class="py-16" id="team">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-12">
+                <h2 class="text-4xl font-extrabold mb-4" style="font-family: 'Nokora', sans-serif;" data-aos="fade-up">ក្រុមការងាររបស់យើង</h2>
+                <p class="text-xl" data-aos="fade-up" data-aos-delay="100">សូមស្វាគមន៍មកកាន់ក្រុមការងាររបស់យើង! យើងមានក្រុមអ្នកជំនាញដែលប្រឹងប្រែងដើម្បីផ្តល់ការបណ្តុះបណ្តាលល្អបំផុត។</p>
+            </div>
+    
+            <div class="flex flex-wrap justify-center space-x-8">
+                <!-- Team Member 1 -->
+                <div class="w-full md:w-1/3 text-center mb-8" data-aos="fade-up" data-aos-delay="200">
+                    <img src="./img/mean.jpg" alt="Team Member" class="w-40 h-40 object-cover rounded-full mx-auto mb-4">
+                    <h3 class="text-2xl font-semibold mb-2">ញ៉ែម សុមាន | និសិត្សឆ្នាំទី២</h3>
+                    <p class="mb-4">អ្នកបណ្តុះបណ្តាលកូដ</p>
+                    <p>ញ៉ែម សុមាន គឺជាអ្នកអភិវឌ្ឍន៍វេបប្រចាំក្រុមយើង ដែលមានជំនាញកាន់តែច្រើនក្នុងការអភិវឌ្ឍន៍វេបសាយ និងការបណ្ដុះបណ្ដាល។</p>
+                </div>
+    
+                <!-- Team Member 2 -->
+                <div class="w-full md:w-1/3 text-center mb-8" data-aos="fade-up" data-aos-delay="400">
+                    <img src="./img/daro.jpg" alt="Team Member" class="w-40 h-40 object-cover rounded-full mx-auto mb-4">
+                    <h3 class="text-2xl font-semibold mb-2">ជឿន ដារ៉ូ | និសិត្សឆ្នាំទី២</h3>
+                    <p class="mb-4">អ្នកបណ្តុះបណ្តាលស្ថាបត្យករវេប</p>
+                    <p>ជឿន ដារ៉ូ ជាអ្នកជំនាញក្នុងការស្ថាបត្យកម្មវេប ដែលនាំមុខក្នុងការអភិវឌ្ឍន៍រចនាបទសម្រាប់គម្រោងយើង។</p>
+                </div>
+    
+                <!-- Team Member 3 -->
+                <div class="w-full md:w-1/3 text-center mb-8" data-aos="fade-up" data-aos-delay="600">
+                    <img src="./img/hak.jpg" alt="Team Member" class="w-40 h-40 object-cover rounded-full mx-auto mb-4">
+                    <h3 class="text-2xl font-semibold mb-2">ធី មួយហាក់ | និសិត្សឆ្នាំទី២</h3>
+                    <p class="mb-4">អ្នកបណ្តុះបណ្តាលកូដវេប</p>
+                    <p>ធី មួយហាក់ គឺជាអ្នកជំនាញក្នុងការសរសេរកូដវេបដែលមានបទពិសោធន៍ជាច្រើនក្នុងការអភិវឌ្ឍកម្មវិធី។</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    
+
+    <section class="bg-gray-100 py-16" id="purpose">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-12">
+                <h2 class="text-4xl font-extrabold text-gray-800 mb-4" style="font-family: 'Nokora', sans-serif;">គោលបំណងនៃការបង្កើតវេបសាយនេះ</h2>
+                <p class="text-xl text-gray-600">វេបសាយនេះត្រូវបានបង្កើតឡើងដើម្បីផ្តល់ឱកាសសម្រាប់ការរៀនកូដ និងជួយបង្កើតការយល់ដឹងពីភាសាកូដនានាជាភាសាខ្មែរ។</p>
+            </div>
+    
+            <div class="flex flex-wrap justify-center space-x-8">
+                <!-- Purpose Point 1 -->
+                <div class="w-full md:w-1/3 text-center mb-8">
+                    <div class="bg-white shadow-lg rounded-lg p-6">
+                        <h3 class="text-2xl font-semibold text-gray-800 mb-4">ការអភិវឌ្ឍជំនាញកូដ</h3>
+                        <p class="text-gray-600">យើងបង្កើតវេបសាយនេះដើម្បីជួយអ្នករៀនបង្កើតកម្មវិធីនិងកូដផ្ទាល់ខ្លួនឲ្យមានការយល់ដឹងនិងជំនាញជាមួយភាសាកូដដែលមានប្រយោជន៍។</p>
+                    </div>
+                </div>
+    
+                <!-- Purpose Point 2 -->
+                <div class="w-full md:w-1/3 text-center mb-8">
+                    <div class="bg-white shadow-lg rounded-lg p-6">
+                        <h3 class="text-2xl font-semibold text-gray-800 mb-4">ការបង្កើតសហគមន៍អ្នកសិក្សា</h3>
+                        <p class="text-gray-600">យើងចង់បង្កើតសហគមន៍មួយសម្រាប់អ្នកសិក្សាដើម្បីអាចចែករំលែកគ្នានូវបទពិសោធន៍និងបច្ចេកវិទ្យា ក្នុងការអភិវឌ្ឍន៍វេបសាយ។</p>
+                    </div>
+                </div>
+    
+                <!-- Purpose Point 3 -->
+                <div class="w-full md:w-1/3 text-center mb-8">
+                    <div class="bg-white shadow-lg rounded-lg p-6">
+                        <h3 class="text-2xl font-semibold text-gray-800 mb-4">ការលើកស្ទួយកម្រិតជំនាញ</h3>
+                        <p class="text-gray-600">វេបសាយនេះក៏មានគោលបំណងលើកស្ទួយកម្រិតជំនាញកូដរបស់អ្នកដោយផ្តល់ឱកាសរៀនពីគម្រោងជាក់ស្តែងនិងវគ្គសិក្សាថ្មីៗ។</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+<!-- Contact Section -->
+<section class="py-16 " id="contact">
+    <div class="container mx-auto px-6 text-center">
+        <h2 class="text-4xl font-extrabold mb-4" style="font-family: 'Nokora', sans-serif;">ទំនាក់ទំនង</h2>
+        <p class="text-xl mb-8">សូមទំនាក់ទំនងមកកាន់យើងក្តី</p>
+        
+        <div class="flex justify-center space-x-8">
+            <!-- Facebook Icon -->
+            <a href="https://www.facebook.com" target="_blank" class="text-blue-600 hover:text-blue-800">
+                <i class="fab fa-facebook-f text-3xl"></i>
+            </a>
+            
+            <!-- Telegram Icon -->
+            <a href="https://t.me" target="_blank" class="text-blue-500 hover:text-blue-700">
+                <i class="fab fa-telegram-plane text-3xl"></i>
+            </a>
+            
+            <!-- TikTok Icon -->
+            <a href="https://www.tiktok.com" target="_blank" class="text-black hover:text-gray-800">
+                <i class="fab fa-tiktok text-3xl"></i>
+            </a>
+            
+            <!-- YouTube Icon -->
+            <a href="https://www.youtube.com" target="_blank" class="text-red-600 hover:text-red-800">
+                <i class="fab fa-youtube text-3xl"></i>
+            </a>
+        </div>
+    </div>
+</section>
+
+<section class="bg-gray-900 text-white py-12">
+    <div class="container mx-auto px-6 text-center md:text-left">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <!-- About Section -->
+            <div>
+                <h3 class="text-2xl font-semibold mb-4">អំពីយើង</h3>
+                <p class="text-gray-400 mb-4">CodeKhmerLearning ផ្តល់ឱ្យអ្នកនូវវគ្គសិក្សាពិសេសក្នុងការរៀនកូដភាសាខ្មែរ។ យើងមានក្រុមការងារព្រមមានជំនាញក្នុងការអភិវឌ្ឍកម្មវិធី និងវេបសាយ។</p>
+                <p class="text-gray-400">© 2025 CodeKhmerLearning. All Rights Reserved.</p>
+            </div>
+
+            <!-- Quick Links Section -->
+            <div>
+                <h3 class="text-2xl font-semibold mb-4">តំណភ្ជាប់រហ័ស</h3>
+                <ul>
+                    <li><a href="index.html" class="text-gray-400 hover:text-white mb-2">ផ្ទាំងដើម</a></li>
+                    <li><a href="#courses" class="text-gray-400 hover:text-white mb-2">វគ្គសិក្សា</a></li>
+                    <li><a href="about.html" class="text-gray-400 hover:text-white mb-2">អំពីយើង</a></li>
+                    <li><a href="#contact" class="text-gray-400 hover:text-white mb-2">ទំនាក់ទំនង</a></li>
+                </ul>
+            </div>
+
+            <!-- Contact & Social Section -->
+            <div>
+                <h3 class="text-2xl font-semibold mb-4">ទំនាក់ទំនង</h3>
+                <p class="text-gray-400 mb-4">សូមទំនាក់ទំនងមកកាន់យើងក្តី:</p>
+                <p class="text-gray-400 mb-4">Email: info@codekhmer.com</p>
+                <p class="text-gray-400 mb-6">Phone: +855 123 456 789</p>
+
+                <!-- Social Media Icons -->
+                <div class="flex justify-center space-x-6">
+                    <a href="https://www.facebook.com" target="_blank" class="text-blue-600 hover:text-blue-800">
+                        <i class="fab fa-facebook-f text-2xl"></i>
+                    </a>
+                    <a href="https://t.me" target="_blank" class="text-blue-500 hover:text-blue-700">
+                        <i class="fab fa-telegram-plane text-2xl"></i>
+                    </a>
+                    <a href="https://www.tiktok.com" target="_blank" class="text-black hover:text-gray-700">
+                        <i class="fab fa-tiktok text-2xl"></i>
+                    </a>
+                    <a href="https://www.youtube.com" target="_blank" class="text-red-600 hover:text-red-800">
+                        <i class="fab fa-youtube text-2xl"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="text-center mt-8">
+            <p class="text-gray-400 text-sm">&copy; 2025 CodeKhmerLearning. All rights reserved.</p>
+        </div>
+    </div>
+</section>
+
+
+    
+
+    <script src="fetchdata_card.js"></script>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Nokora&display=swap" rel="stylesheet">
+    
+
+    
+    <script src="typingMainText.js"></script>
+    <script>
+        const menuButton = document.getElementById('menuButton');
+        const mobileMenu = document.getElementById('mobileMenu');
+
+        menuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        const courseButton = document.getElementById('courseButton');
+        const courseDropdown = document.getElementById('courseDropdown');
+
+        courseButton.addEventListener('click', () => {
+            courseDropdown.classList.toggle('hidden');
+        });
+
+        const mobileCourseButton = document.getElementById('mobileCourseButton');
+        const mobileCourseDropdown = document.getElementById('mobileCourseDropdown');
+
+        mobileCourseButton.addEventListener('click', () => {
+            mobileCourseDropdown.classList.toggle('hidden');
+        });
+    </script>
+    <script>
+        AOS.init({
+            duration: 1000, // Animation duration
+            easing: 'ease-in-out', // Animation easing
+            once: true, // Trigger animation only once when scrolled into view
+        });
+    </script>
+    
+    
+    <script src="script.js"></script>
+    <script src="darkandlight.js"></script>
+</body>
+</html>

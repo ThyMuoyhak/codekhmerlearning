@@ -1,0 +1,142 @@
+/* Dark Mode Styles */
+body.dark-mode {
+    background-color: #161616; /* Black background */
+    color: #ffffff; /* White text for readability */
+    #card{
+        border: 1px solid rgb(255, 255, 255);
+        transition: all 0.3s;
+    }
+    #card:hover{
+        border: 1px solid rgb(53, 127, 255);
+    }
+}
+
+
+
+/* Light Mode Styles */
+body.light-mode {
+    background-color: #ffffff; /* White background */
+    color: #000000; /* Black text */
+    #card{
+        border: 1px solid rgb(255, 255, 255);
+        transition: all 0.3s;
+    }
+    #card:hover{
+        border: 1px solid rgb(53, 127, 255);
+    }
+}
+
+/* Optionally, style the button or other components differently in dark mode */
+body.dark-mode #themeToggle {
+    background-color: #000000; /* Dark button for dark mode */
+    color: #ffffff;
+}
+
+
+ /* Smooth typewriter animation */
+ @keyframes typewriter {
+    0% {
+        width: 0;
+    }
+    100% {
+        width: 100%;
+    }
+}
+
+/* Apply smooth animation to the main text */
+.animate-typewriter {
+    display: inline-block;
+    overflow: hidden;
+    white-space: nowrap;
+    border-right: 4px solid transparent;
+    animation: typewriter 5s ease-in-out forwards, blink-caret 0.75s step-end infinite;
+}
+
+/* Blinking cursor effect */
+@keyframes blink-caret {
+    50% {
+        border-color: transparent;
+    }
+}
+
+/* button */
+/* CSS */
+.button-85 {
+    padding: 0.6em 2em;
+    border: none;
+    outline: none;
+    color: rgb(255, 255, 255);
+    background: #111;
+    cursor: pointer;
+    position: relative;
+    z-index: 0;
+    border-radius: 10px;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    transition: all 0.2s;
+    font-family: 'Nokora', sans-serif;
+  }
+  
+  .button-85:before {
+    content: "";
+    background: linear-gradient(
+      45deg,
+      #ff0000,
+      #ff7300,
+      #fffb00,
+      #48ff00,
+      #00ffd5,
+      #002bff,
+      #7a00ff,
+      #ff00c8,
+      #ff0000
+    );
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    background-size: 400%;
+    z-index: -1;
+    filter: blur(5px);
+    -webkit-filter: blur(5px);
+    width: calc(100% + 4px);
+    height: calc(100% + 4px);
+    animation: glowing-button-85 20s linear infinite;
+    transition: opacity 0.3s ease-in-out;
+    border-radius: 10px;
+    font-family: 'Nokora', sans-serif;
+  }
+  
+  @keyframes glowing-button-85 {
+    0% {
+      background-position: 0 0;
+    }
+    50% {
+      background-position: 400% 0;
+    }
+    100% {
+      background-position: 0 0;
+    }
+  }
+  
+  .button-85:after {
+    z-index: -1;
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: #000000;
+    left: 0;
+    top: 0;
+    border-radius: 10px;
+    border: 2px solid white;
+    font-family: 'Nokora', sans-serif;
+  }
+
+  .button-85:hover{
+    transform: scale(1.1);
+  }
+
+  li a:hover{
+    text-decoration: underline;
+  }
