@@ -1,41 +1,94 @@
 {
-    "courses": [
-      {
-        "title": "កម្មវិធី C",
-        "description": "សិក្សាពីមូលដ្ឋាននៃកម្មវិធី C ដែលជាភាសាមួយមានអំណាចនិងអាចប្រើប្រាស់បានល្អ។",
-        "image": "https://www.eldemy.co.uk/assets/images/media/pictures/courses/c_programming_for_beginners.jpg",
-        "link": "./course/c.html"
-      },
-      {
-        "title": "កម្មវិធី C++",
-        "description": "ឧទាហរណ៍ការសិក្សានៃកម្មវិធី C++ ដើម្បីបង្កើតកម្មវិធីដែលមានភាពរឹងមាំ។",
-        "image": "https://img-c.udemycdn.com/course/750x422/1576854_9aeb_2.jpg",
-        "link": "#"
-      },
-      {
-        "title": "HTML & CSS",
-        "description": "សូមស្វែងយល់ពីគ្រឿងបំពង់សំខាន់ៗនៃការអភិវឌ្ឍន៍វេបផេកជាមួយ HTML និង CSS។",
-        "image": "https://camo.githubusercontent.com/21bb8ae3629c4852404841252c65baa38426e4c0d01a68a0f7e6fd121d4649dc/68747470733a2f2f7777772e69696d2e66722f65636f6c652d7765622f77702d636f6e74656e742f75706c6f6164732f323031372f30312f48544d4c352e6a7067",
-        "link": "#"
-      },
-      {
-        "title": "JavaScript",
-        "description": "សូមរៀន JavaScript ដើម្បីបង្កើតកម្មវិធីវេបដែលមានភាពជាដំណើរការនិងអន្តរជាតិកាន់តែច្រើន។",
-        "image": "https://www.datocms-assets.com/48401/1628644950-javascript.png",
-        "link": "#"
-      },
-      {
-        "title": "Python",
-        "description": "សូមស្វែងយល់ពី Python ដែលជាភាសាមួយមានប្រយោជន៍សម្រាប់ការអភិវឌ្ឍន៍វេប ផ្នែកវិទ្យាសាស្ត្រ និងលទ្ធផលផ្សេងៗទៀត។",
-        "image": "https://raspberry-valley.azurewebsites.net/img/Python-01.jpg",
-        "link": "#"
-      },
-      {
-        "title": "React JS",
-        "description": "សូមរៀន React JS ដើម្បីបង្កើតកម្មវិធីវេបដែលទាន់សម័យ ទទួលបានលទ្ធផលយ៉ាងលឿន និងអាចពង្រីកបាន។",
-        "image": "https://jaygould.co.uk/static/a540c5d36e6d0b33716ed77fa4a00bc3/c1b63/react.png",
-        "link": "#"
-      }
-    ]
-  }
-  
+  "courses": [
+    {
+      "title": "កម្មវិធី C",
+      "description": "សិក្សាពីមូលដ្ឋាននៃកម្មវិធី C ដែលជាភាសាមួយមានអំណាចនិងអាចប្រើប្រាស់បានល្អ។",
+      "image": "https://www.eldemy.co.uk/assets/images/media/pictures/courses/c_programming_for_beginners.jpg",
+      "link": "./course/c.html"
+    },
+    {
+      "title": "កម្មវិធី C++",
+      "description": "ឧទាហរណ៍ការសិក្សានៃកម្មវិធី C++ ដើម្បីបង្កើតកម្មវិធីដែលមានភាពរឹងមាំ។",
+      "image": "https://img-c.udemycdn.com/course/750x422/1576854_9aeb_2.jpg",
+      "link": "#"
+    },
+    {
+      "title": "HTML & CSS",
+      "description": "សូមស្វែងយល់ពីគ្រឿងបំពង់សំខាន់ៗនៃការអភិវឌ្ឍន៍វេបផេកជាមួយ HTML និង CSS។",
+      "image": "https://camo.githubusercontent.com/21bb8ae3629c4852404841252c65baa38426e4c0d01a68a0f7e6fd121d4649dc/68747470733a2f2f7777772e69696d2e66722f65636f6c652d7765622f77702d636f6e74656e742f75706c6f6164732f323031372f30312f48544d4c352e6a7067",
+      "link": "#"
+    },
+    {
+      "title": "JavaScript",
+      "description": "សូមរៀន JavaScript ដើម្បីបង្កើតកម្មវិធីវេបដែលមានភាពជាដំណើរការនិងអន្តរជាតិកាន់តែច្រើន។",
+      "image": "https://www.datocms-assets.com/48401/1628644950-javascript.png",
+      "link": "#"
+    },
+    {
+      "title": "Python",
+      "description": "សូមស្វែងយល់ពី Python ដែលជាភាសាមួយមានប្រយោជន៍សម្រាប់ការអភិវឌ្ឍន៍វេប ផ្នែកវិទ្យាសាស្ត្រ និងលទ្ធផលផ្សេងៗទៀត។",
+      "image": "https://raspberry-valley.azurewebsites.net/img/Python-01.jpg",
+      "link": "#"
+    },
+    {
+      "title": "React JS",
+      "description": "សូមរៀន React JS ដើម្បីបង្កើតកម្មវិធីវេបដែលទាន់សម័យ ទទួលបានលទ្ធផលយ៉ាងលឿន និងអាចពង្រីកបាន។",
+      "image": "https://jaygould.co.uk/static/a540c5d36e6d0b33716ed77fa4a00bc3/c1b63/react.png",
+      "link": "#"
+    },
+    {
+      "title": "Tailwind",
+      "description": "សូមរៀន Tailwindcss ដើម្បីបង្កើតកម្មវិធីវេបដែលទាន់សម័យ ទទួលបានលទ្ធផលយ៉ាងលឿន និងអាចពង្រីកបាន។",
+      "image": "https://blog.paillaugue.fr/postsAssets/introduction-to-tailwind-css.png",
+      "link": "#"
+    },
+    {
+      "title": "Bootstrap",
+      "description": "សូមរៀន Bootstrap ដើម្បីបង្កើតកម្មវិធីវេបដែលទាន់សម័យ ទទួលបានលទ្ធផលយ៉ាងលឿន និងអាចពង្រីកបាន។",
+      "image": "https://localo.com/assets/img/definitions/what-is-bootstrap.webp",
+      "link": "#"
+    },
+    {
+      "title": "C#",
+      "description": "សូមរៀន C# ដើម្បីបង្កើតកម្មវិធីវេបដែលទាន់សម័យ ទទួលបានលទ្ធផលយ៉ាងលឿន និងអាចពង្រីកបាន។",
+      "image": "https://hayqsystem.am/wp-content/uploads/2024/02/jhgj-4.jpg",
+      "link": "#"
+    },
+    {
+      "title": "Laravel",
+      "description": "សូមរៀន Laravel ដើម្បីបង្កើតកម្មវិធីវេបដែលទាន់សម័យ ទទួលបានលទ្ធផលយ៉ាងលឿន និងអាចពង្រីកបាន។",
+      "image": "https://ik.imagekit.io/olibr/blogimages/Laravel-cover-image.webp",
+      "link": "#"
+    },
+    {
+      "title": "MySQL",
+      "description": "សូមរៀន MySQL ដើម្បីបង្កើតកម្មវិធីវេបដែលទាន់សម័យ ទទួលបានលទ្ធផលយ៉ាងលឿន និងអាចពង្រីកបាន។",
+      "image": "https://bif.telkomuniversity.ac.id/sahecar/2024/12/Apa-Itu-MySQL-Pengertian-MySQL-Cara-Kerja-dan-Kelebihannya.png",
+      "link": "#"
+    },
+    {
+      "title": "MongoDB",
+      "description": "សូមរៀន MongoDB ដើម្បីបង្កើតកម្មវិធីវេបដែលទាន់សម័យ ទទួលបានលទ្ធផលយ៉ាងលឿន និងអាចពង្រីកបាន។",
+      "image": "https://www.nirvanacanada.com/businessonline/wp-content/uploads/2023/05/MongoDB1.jpg",
+      "link": "#"
+    },
+    {
+      "title": "Dart",
+      "description": "សូមរៀន Dart ដើម្បីបង្កើតកម្មវិធីវេបដែលទាន់សម័យ ទទួលបានលទ្ធផលយ៉ាងលឿន និងអាចពង្រីកបាន។",
+      "image": "https://swansoftwaresolutions.com/wp-content/uploads/2020/02/08.20.20-What-is-Dart-and-how-is-it-used-1.jpg",
+      "link": "#"
+    },
+    {
+      "title": "VueJS",
+      "description": "សូមរៀន VueJS ដើម្បីបង្កើតកម្មវិធីវេបដែលទាន់សម័យ ទទួលបានលទ្ធផលយ៉ាងលឿន និងអាចពង្រីកបាន។",
+      "image": "https://miro.medium.com/v2/resize:fit:1400/1*ACR0gj0wbx91V_xgURifWg.png",
+      "link": "#"
+    },
+    {
+      "title": "Flutter",
+      "description": "សូមរៀន Flutter ដើម្បីបង្កើតកម្មវិធីវេបដែលទាន់សម័យ ទទួលបានលទ្ធផលយ៉ាងលឿន និងអាចពង្រីកបាន។",
+      "image": "https://www.manchesterdigital.com/storage/13254/flutter-3.png",
+      "link": "#"
+    }
+  ]
+}
